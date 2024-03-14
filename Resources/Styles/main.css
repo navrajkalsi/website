@@ -4,7 +4,7 @@ body {
     align-items: center;
     text-align: center;
     color: #141414;
-    background-image: url("../Resources/Images/gradient_1.png");/*bg image should be 16:9*/
+    background-image: url("../Images/gradient_1.png");/*bg image should be 16:9*/
     background-repeat: no-repeat;
     background-size: contain;
     background-position: top;
@@ -26,7 +26,6 @@ header {
     font-size: 500%;
     font-family: 'aquirebold';
     color: #ff0000;
-    transition: 1s;
     animation: header 4s ease-in-out;
 }
 
@@ -35,7 +34,11 @@ header {
     animation: span 5s ease-in-out;
 }
 
-header:hover {
+.head {
+    transition: 0.6s;
+}
+
+.head:hover {
     color: #141414;
 }
 
@@ -64,10 +67,16 @@ header:hover {
 }
 
 .opening {
+    display: inline-block;
     font-size: x-large;
     font-family: 'aptos ';
     margin-top: 15%;
-    margin-bottom: 20%;
+    margin-bottom: 19%;
+    transition: 0.7s;
+}
+
+.opening:hover {
+    transform: scale(105%);
 }
 
 footer {
@@ -87,8 +96,10 @@ footer {
 }
 
 .arrow-container {
-    display: flex;
+    margin-top: 0.25%;
+    display: inline-flex;
     align-items: center;
+    transition: 1s;
     animation: arrow 3s ease-in-out infinite;
 }
 
@@ -104,6 +115,10 @@ footer {
     border-color: #141414;
     transform: rotate(135deg);
     border-style: solid;
+}
+
+.arrow-container:hover {
+    animation-play-state: paused;
 }
 
 @keyframes arrow {
@@ -124,5 +139,5 @@ footer {
 }
 
 .scroll-down {
-    margin-bottom: -1%;
+    margin-bottom: 0;
 }
