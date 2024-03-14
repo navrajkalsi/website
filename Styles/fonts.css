@@ -30,3 +30,11 @@
     font-style: normal;
 
 }
+
+@font-face {
+    font-family: 'aptos';
+    src: url("../Resources/Fonts/aptos.woff2") format('woff2'),
+        url("../Resources/Fonts/aptos.woff") format('woff');
+    font-weight: normal;
+    font-size: normal;
+}
