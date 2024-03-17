@@ -1,13 +1,14 @@
 body {
+    box-sizing: border-box;
     background-color: #141414;
     border-radius: 5px;
     align-items: center;
     text-align: center;
     color: #141414;
-    background-image: url("../Images/gradient_1.png");/*bg image should be 16:9*/
+    background-image: url("../Images/gradient_1.png"), url("../Images/gradient_2.png");/*bg image should be 16:9*/
     background-repeat: no-repeat;
     background-size: contain;
-    background-position: top;
+    background-position: top, bottom;
 }
 
 html {
@@ -80,8 +81,7 @@ header {
 }
 
 footer {
-    padding-top: 2%;
-    padding-bottom: 2%;
+    padding: 2% 0;
 }
 
 @keyframes header {
@@ -139,5 +139,125 @@ footer {
 }
 
 .scroll-down {
-    margin-bottom: 0;
+    margin-bottom: -2px;
+}
+
+.noBar::-webkit-scrollbar {
+    display: none;
+  }
+  
+.noBar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.about_p, .about_h {
+    color: #eeeeee;
+    font-family: 'aptos';
+}
+
+.about_h {
+    margin: 3% auto 2% 2%;
+    text-align: left;
+}
+
+.about_p {
+    margin-left: 2%;
+    text-align: left;
+}
+
+ul {
+    margin: 0 0;
+    padding: 0 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+li {
+    display: inline-block;
+    margin-top: 1.5%;
+    padding: 0 3%;
+    transform: scale(75%);
+}
+
+nav {
+    font-family: 'aptos';
+    font-size: larger;
+    margin-top: 0;
+}
+
+/* From: https://www.youtube.com/watch?v=nAjR0Oj0J8E */
+
+@keyframes slide {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+.pages {
+    white-space: nowrap;
+    overflow: hidden;
+    position: relative;
+}
+
+.pages_slide {
+    padding: 4.5vw 0;
+    display: inline-block;
+    animation: slide 20s infinite linear;
+}
+
+.card {
+    background-color: #18191a;
+    box-sizing: content-box;
+    padding: 0;
+    position: relative;
+    display: inline-block;
+    height: fit-content;
+    width: 33vw;
+    transition: 0.5s ease-in-out;
+    margin: 0 5vw;
+    border-color: #18191a;
+    border-style: solid;
+    border-width: 5px 5px 0 5px;
+    border-radius: 10px;
+    box-shadow: 0 0 25px 25px #18191a;
+
+    .title {
+        display: block;
+        position: absolute;
+        float: right;
+        top: 31%;
+        width: 100%;
+        text-align: center;
+        z-index: 1000;
+        color: white;
+        font-family: 'aptos';
+        font-weight: 1000;
+        font-size: 75px;
+    }
+}
+
+.card:hover {
+    transform: scale(105%);
+}
+
+.card_image{
+    width: 100%;
+    height: auto;
+    filter: blur(12px);
+    border-radius: 10px;
+}
+
+.pages:hover .pages_slide {
+    animation-play-state: paused;
+}
+
+section {
+    padding-bottom: 2%;
+    background-color: #141414;
 }
