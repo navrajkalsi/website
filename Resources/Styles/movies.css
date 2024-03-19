@@ -1,0 +1,102 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    padding: 0.75%;
+    border-radius: 5px;
+    background-color: black;
+    overflow-x: hidden;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    text-align: center;
+}
+
+html::-webkit-scrollbar {
+    display: none;
+}
+
+body {
+    background-color: #eeeeee;
+    border-radius: 5px;
+    background-image: url("../Images/gradient_1.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: top;
+}
+
+nav {
+    position: fixed;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 999;
+    padding: 0 4em;
+    margin: -0.75%;
+    background-color: #fff;
+    border-radius: 10px 10px 0 0;
+}
+
+
+a {
+    text-decoration: none;
+    color: #141414;
+    padding: 0 1em;
+    font-family: 'aptos';
+}
+
+.left, .right {
+    transition: 0.5s;
+
+    a {
+        font-size: 125%;
+    }
+}
+
+.left:hover, .right:hover {
+    transform: scale(110%);
+}
+
+header {
+    position: fixed;
+    margin-top: -0.60%;
+    top: 0;
+    left: 30%;
+    font-size: 500%;
+    z-index: 1000;
+    align-content: center;
+    transform: scale(95%);
+
+    a {
+        font-family: 'aquirebold';
+        align-self: center;
+        color: #ff0000;
+    }
+    
+}
+
+p {
+    width: 100%;
+    height: 65vh;
+    position: relative;
+}
+
+ul {
+    margin-top: -38vh;
+    padding: 0 15%;
+    list-style-type: none;
+
+    span {
+        font-family: 'aptos';
+        font-size: 400%;
+        font-weight: 700;
+    }
+}
+
+img {
+    width: 100%;
+}

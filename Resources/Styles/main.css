@@ -12,17 +12,15 @@ body {
 }
 
 html {
-    padding: 0.25% 0.25% 0.25% 0.25%;
+    padding: 0.25%;
     background-color: #000000;
     border-radius: 5px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
 header {
     background-color: transparent;
-    border-radius: 5px;
-    border-width: 2px 2px 2px 2px;
-    border-style: hidden;
-    border-color: #eeeeee;
     padding: 1% 1% 2% 1%;
     font-size: 500%;
     font-family: 'aquirebold';
@@ -46,10 +44,16 @@ header {
 @keyframes span {
     0% {
         content: "Navraj Kalsi's";
+        color: #141414;
     }   
 
     50% {
         opacity: 0;
+        color: #141414;
+    }
+
+    70% {
+        color: #ff0000;
     }
 
     100% {
@@ -145,11 +149,6 @@ footer {
 .noBar::-webkit-scrollbar {
     display: none;
   }
-  
-.noBar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-}
 
 .about_p, .about_h {
     color: #eeeeee;
@@ -187,6 +186,16 @@ nav {
     margin-top: 0;
 }
 
+.animoji {
+    display: block;
+    position: absolute;
+    transform: scale(20%);
+    right: -15%;
+    top: 62%;
+    float: right;
+    pointer-events: none;
+}
+
 /* From: https://www.youtube.com/watch?v=nAjR0Oj0J8E */
 
 @keyframes slide {
@@ -218,7 +227,7 @@ nav {
     position: relative;
     display: inline-block;
     height: fit-content;
-    width: 33vw;
+    width: 31vw;
     transition: 0.5s ease-in-out;
     margin: 0 5vw;
     border-color: #18191a;
@@ -238,7 +247,7 @@ nav {
         color: white;
         font-family: 'aptos';
         font-weight: 1000;
-        font-size: 75px;
+        font-size: 4.5vw;
     }
 }
 
@@ -249,7 +258,7 @@ nav {
 .card_image{
     width: 100%;
     height: auto;
-    filter: blur(12px);
+    filter: blur(10px);
     border-radius: 10px;
 }
 
@@ -260,4 +269,9 @@ nav {
 section {
     padding-bottom: 2%;
     background-color: #141414;
+}
+
+footer {
+    font-family: 'aptos';
+    font-size: small;
 }
