@@ -38,3 +38,21 @@
     font-weight: normal;
     font-size: normal;
 }
+
+@font-face {
+    /* Source: https://www.lewismcguffie.com/Tusker-Grotesk-Typeface */
+    font-family: 'Tusker Grotesk SB 4600';
+    src: url("../Fonts/TuskerGrotesk-4600Semibold.woff2") format('woff2'),
+         url("../Fonts/TuskerGrotesk-4600Semibold.woff") format('woff');
+    font-weight: normal;
+    font-size: normal;
+}
+
+@font-face {
+    /* Source: https://www.lewismcguffie.com/Tusker-Grotesk-Typeface */
+    font-family: 'Tusker Grotesk SB 3600';
+    src: url("../Fonts/TuskerGrotesk-3600Semibold.woff2") format('woff2'),
+         url("../Fonts/TuskerGrotesk-3600Semibold.woff") format('woff');
+    font-weight: normal;
+    font-size: normal;
+}

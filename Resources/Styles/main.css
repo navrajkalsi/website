@@ -84,10 +84,6 @@ header {
     transform: scale(105%);
 }
 
-footer {
-    padding: 2% 0;
-}
-
 @keyframes header {
     0% {
         padding-top: 23.5vw;
@@ -274,4 +270,5 @@ section {
 footer {
     font-family: 'aptos';
     font-size: small;
+    padding: 2% 0;
 }
