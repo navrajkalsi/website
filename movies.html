@@ -11,7 +11,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 </head>
 <body>
-    <nav>
+    <nav id="navigation">
         <div class="left">
             <a href="series.html">TV Shows</a>
         </div>
@@ -25,22 +25,201 @@
     </header>
 
     <p>
-        <div style="color: #141414;">
+        <div style="color: #141414; font-family: 'aptos';">
             <h2>I &#10084; movies</h2>This page contains an unordered list of some of my favourite movies.
         </div>
     </p>
 
-    <ul>
-        <li>
+    <ul id="movies_list">
+        <li id="oppie_list">
             <img class="image" src="Resources/Images/Movies/oppenheimer1.jpg" alt="">
             <img class="image" src="Resources/Images/Movies/oppenheimer2.jpg" alt="">
             <img class="image" src="Resources/Images/Movies/oppenheimer3.jpg" alt="">
+            <span><strong>Source:</strong> Universal Pictures</span>
         </li>
         <span class="oppie">Oppenheimer</span>
         <div>Directed by <strong>Christopher Nolan</strong>.<br>My current number <strong>1</strong> movie.<br>Incredible directing and story telling with exceptional score.</div>
+        
+        <li id="tenet_list">
+            <img class="image_tenet" src="Resources/Images/Movies/tenet1.jpg" alt="">
+            <img class="image_tenet" src="Resources/Images/Movies/tenet2.jpg" alt="">
+            <img class="image_tenet" src="Resources/Images/Movies/tenet3.jpg" alt="">
+            <span><strong>Source:</strong> Warner Bros. Pictures</span>
+        </li>
+        <span class="tenet" style="text-align: right;">Tenet</span>
+        <div>Written & Directed by <strong>Christopher Nolan</strong>.<br>This is the one that showed me what cinema means.</div>
+
+        <li id="topgun_list">
+            <img class="image_topgun" src="Resources/Images/Movies/topgun1.jpg" alt="">
+            <img class="image_topgun" src="Resources/Images/Movies/topgun2.jpg" alt="">
+            <img class="image_topgun" src="Resources/Images/Movies/topgun3.jpg" alt="">
+            <span><strong>Source:</strong> Paramount Pictures</span>
+        </li>
+        <span class="topgun">Top Gun Maverick</span>
+        <div>Great Experience in a theatre.<br>Really inspiring.</div>
+        
+        <li id="dune_list">
+            <img class="image_dune" src="Resources/Images/Movies/dune1.jpg" alt="">
+            <img class="image_dune" src="Resources/Images/Movies/dune2.jpg" alt="">
+            <img class="image_dune" src="Resources/Images/Movies/dune3.jpg" alt="">
+            <span><strong>Source:</strong> Warner Bros. Pictures</span>
+        </li>
+        <span class="dune" style="text-align: right;">Dune (1 & 2)</span>
+        <div>Directed by <strong>Denis Villenevue</strong>.<br>Best sound I have ever heard.</div>
+
+        <li id="batman_list">
+            <img class="image_batman" src="Resources/Images/Movies/batman1.jpg" alt="">
+            <img class="image_batman" src="Resources/Images/Movies/batman2.jpg" alt="">
+            <img class="image_batman" src="Resources/Images/Movies/batman3.jpg" alt="">
+            <img class="image_batman" src="Resources/Images/Movies/batman4.jpg" alt="">
+            <span><strong>Source:</strong> Warner Bros. Pictures</span>
+        </li>
+        <span class="batmna" >The Batman</span>
+        <div>Great movie with noir and dark setting.</div>
     </ul>
 
-    <p></p>
+    <p class="end_list">Other mentions:</p>
+
+    <div class="slide">
+        <div class="movies">
+            <div>Shawshank Redemption</div>
+            <div>Dunkirk</div>
+            <div>Inception</div>
+            <div>Interstellar</div>
+            <div>The Social Network</div>
+            <div>Forrest Gump</div>
+            <div>Django Unchained</div>
+        </div>
+        <div class="movies">
+            <div>Shawshank Redemption</div>
+            <div>Dunkirk</div>
+            <div>Inception</div>
+            <div>Interstellar</div>
+            <div>The Social Network</div>
+            <div>Forrest Gump</div>
+            <div>Django Unchained</div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="movies">
+            <div>The Big Short</div>
+            <div>Edge of Tomorrow</div>
+            <div>King Richard</div>
+            <div>Cha Cha Real Smooth</div>
+            <div>Air</div>
+            <div>Where The Crawdads Sing</div>
+            <div>Marraige Story</div>
+        </div>
+        <div class="movies">
+            <div>The Big Short</div>
+            <div>Edge of Tomorrow</div>
+            <div>King Richard</div>
+            <div>Cha Cha Real Smooth</div>
+            <div>Air</div>
+            <div>Where The Crawdads Sing</div>
+            <div>Marraige Story</div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="movies">
+            <div>Good Will Hunting</div>
+            <div>Pursuit of Happyness</div>
+            <div>The Terminal</div>
+            <div>Hacksaw Ridge</div>
+            <div>Shutter Island</div>
+            <div>Pulp Fiction</div>
+            <div>The Sixth Sense</div>
+        </div>
+        <div class="movies">
+            <div>Good Will Hunting</div>
+            <div>Pursuit of Happyness</div>
+            <div>The Terminal</div>
+            <div>Hacksaw Ridge</div>
+            <div>Shutter Island</div>
+            <div>Pulp Fiction</div>
+            <div>The Sixth Sense</div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="movies">
+            <div>The Green Mile</div>
+            <div>The Trial of Chicago 7</div>
+            <div>Parasite</div>
+            <div>John Wick</div>
+            <div>Cloverfield</div>
+            <div>Dumb and Dumber</div>
+            <div>Memento</div>
+        </div>
+        <div class="movies">
+            <div>The Green Mile</div>
+            <div>The Trial of Chicago 7</div>
+            <div>Parasite</div>
+            <div>John Wick</div>
+            <div>Cloverfield</div>
+            <div>Dumb and Dumber</div>
+            <div>Memento</div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="movies">
+            <div>Joker</div>
+            <div>The Dark Knight</div>
+            <div>Avengers: Endgame</div>
+            <div>The Social Dilemma</div>
+            <div>Oblivion</div>
+            <div>The Equalizer</div>
+            <div>12 Years A Slave</div>
+        </div>
+        <div class="movies">
+            <div>Joker</div>
+            <div>The Dark Knight</div>
+            <div>Avengers: Endgame</div>
+            <div>The Social Dilemma</div>
+            <div>Oblivion</div>
+            <div>The Equalizer</div>
+            <div>12 Years A Slave</div>
+        </div>
+    </div>
+
+    <p style="height: 0.2vh; width: 100vw; background-color: #141414; z-index: 1000;"></p>
+
+    <button data-map-target="#map" id="learning" type="button" style="margin-top: 3.5%;">A Google Map with places where I saw these movies.&nbsp;
+        <div style="display: inline-block;"><img style="height: 4vh;" src="Resources/Icons/menu_1.png" alt=""></div>
+    </button>
+
+    <div id="map">
+        <div id="learnt_header" style="padding: 2% 2% 3% 2%;">
+            <div id="learnt_title">A map of theaters.</div>
+            <button data-close-button id="learnt_close" type="button">&times;</button>
+        </div>
+        <div id="learnt_body"><iframe src="https://www.google.com/maps/d/embed?mid=1p-UhTECIxngqfxhVqxh-2aUiL1cY-Ao&ehbc=2E312F" width="640" height="480"></iframe></div>
+    </div>
+
+    <p style="height: 0;"></p>
+
+    <button data-learnt-target="#learnt" id="learning" type="button">What I learned while building this page.&nbsp;
+        <div style="display: inline-block;"><img style="height: 4vh;" src="Resources/Icons/menu_1.png" alt=""></div>
+    </button>
+
+    <div id="learnt">
+        <div id="learnt_header">
+            <div id="learnt_title">What I learned.</div>
+            <button data-close-button id="learnt_close" type="button">&times;</button>
+        </div>
+        <div id="learnt_body">This page took <strong>A LOT</strong> of time.<br><br>I didn't know any JavaScript as of building this page and for this page to be possible with all of its animations and transitions, it needed a lot of it.<br>Most of the JavaScript is used from external resources, which are credited in the js file.<br>All the movie images belong to the respective studios.<br>Used the horizontal scrolling from the index page and perfected it here.<br>Used a lot of CSS animations that I learned by myself.<br>I also wanted to try making a custom Google Map, so I thought this page would be a perfect opportunity to do so :)<br><br>Thanks for visiting!</div>
+    </div>
+    <div id="overlay"></div>
+
+    <nav id="socials">My Socials:<div id="socials_list">
+        <div class="app"><a href="https://twitter.com/navrajkalsi" target="_blank"><img src="Resources/Icons/twitter.png" alt="twitter/x logo"></a></div>
+        <div class="app"><a href="https://reddit.com/u/NavrajKalsi" target="_blank"><img src="Resources/Icons/reddit.png" alt="reddit logo"></a></div>
+        <div class="app"><a href="https://linkedin.com/in/navrajsinghkalsi" target="_blank"><img src="Resources/Icons/linkedin.png" alt="linkedin logo"></a></div>
+        <div class="app"><a href="https://github.com/navrajkalsi" target="_blank"><img src="Resources/Icons/github.png" alt="gihub logo"></a></div>
+    </div></nav>
 
     <footer>
         Copyright&copy; 2024 Navraj Singh Kalsi

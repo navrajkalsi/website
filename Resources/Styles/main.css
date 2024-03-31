@@ -178,8 +178,9 @@ li {
 
 nav {
     font-family: 'aptos';
-    font-size: larger;
-    margin-top: 0;
+    font-size: 175%;
+    font-weight: 700;
+    margin-top: 2%;
 }
 
 .animoji {
@@ -271,4 +272,90 @@ footer {
     font-family: 'aptos';
     font-size: small;
     padding: 2% 0;
+}
+
+/* Source: https://www.youtube.com/watch?v=MBaw_6cPmAw */
+
+#learnt {
+    color: #eeeeee;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(95%);
+    transition: 0.35s ease-in-out;
+    border: 2px solid #141414;
+    border-radius: 10px;
+    z-index: -1;
+    background-color: #141414;
+    width: 95vw;
+    opacity: 0;
+    max-width: 95vw;
+}
+
+#learnt.active {
+    z-index: 1001;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+#learnt_header {
+    font-family: 'Tusker Grotesk SB 3600';
+    font-size: 300%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #141414;
+    padding: 2% 2% 5% 2%;
+}
+
+#learnt_close {
+    padding: 0% 0.5% 0 0;
+    font-weight: 600;
+    color: #eeeeee;
+    transform: scale(350%);
+}
+
+#overlay {
+    position: fixed;
+    transition: 0.5s ease-in-out;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    pointer-events: none;
+}
+
+#overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+button {
+    background: transparent;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    transition: 0.5s ease-in-out;
+    height: 100%;
+}
+
+button:hover {
+    transform: scale(103%);
+}
+
+#learning {
+    display: inline-block;
+    font-family: 'aptos';
+    font-size: 140%;
+    margin: 3% 0 2% 0;
+    z-index: 999;
+}
+
+#learnt_body {
+    font-family: 'aptos';
+    font-size: 125%;
+    line-height: 200%;
+    margin: 0 auto 5vh auto;
 }
