@@ -5,29 +5,17 @@ ScrollTrigger.create({
         yPercent: -50,
     }),
     scrub: true,
-    trigger: "#movies_list",
+    trigger: "#series_list",
     start: "top bottom",
-    endTrigger: "#movies_list",
+    endTrigger: "#series_list",
     end: "top center",
 })
-
-ScrollTrigger.create({
-    animation: gsap.from("#navigation", {
-        background: 'transparent',
-    }),
-    scrub: true,
-    trigger: "#movies_list",
-    start: "top bottom",
-    endTrigger: "#movies_list",
-    end: "top center",
-})
-
 
 let index1 = 0;
 displayImages1();
 function displayImages1() {
     let i;
-    const images1 = document.getElementsByClassName("image");
+    const images1 = document.getElementsByClassName("image_breakingbad");
     for (i = 0; i < images1.length; i++) {
         images1[i].style.display = "none";
     }    
@@ -43,7 +31,7 @@ index2 = 0;
 displayImages2();
 function displayImages2() {
     let i;
-    const images2 = document.getElementsByClassName("image_dune");
+    const images2 = document.getElementsByClassName("image_succession");
     for (i = 0; i < images2.length; i++) {
         images2[i].style.display = "none";
     }    
@@ -59,7 +47,7 @@ index3 = 0;
 displayImages3();
 function displayImages3() {
     let i;
-    const images3 = document.getElementsByClassName("image_tenet");
+    const images3 = document.getElementsByClassName("image_dark");
     for (i = 0; i < images3.length; i++) {
         images3[i].style.display = "none";
     }    
@@ -75,7 +63,7 @@ index4 = 0;
 displayImages4();
 function displayImages4() {
     let i;
-    const images4 = document.getElementsByClassName("image_topgun");
+    const images4 = document.getElementsByClassName("image_ted");
     for (i = 0; i < images4.length; i++) {
         images4[i].style.display = "none";
     }    
@@ -91,7 +79,7 @@ index5 = 0;
 displayImages5();
 function displayImages5() {
     let i;
-    const images5 = document.getElementsByClassName("image_batman");
+    const images5 = document.getElementsByClassName("image_black");
     for (i = 0; i < images5.length; i++) {
         images5[i].style.display = "none";
     }    
@@ -103,25 +91,8 @@ function displayImages5() {
     setTimeout(displayImages5, 8000);
 }
 
-// window.addEventListener("scroll", (event) => {
-//     let scroll = this.scrollY;
-//     if (scroll > 450) {
-//       document.querySelector("nav").classList.add("shadow");
-//     } else {
-//       document.querySelector("nav").classList.remove("shadow");
-//     }
-//   });
-
 //Source: https://www.shecodes.io/athena/43030-how-to-add-hover-effects-to-a-button-in-javascript#:~:text=To%20add%20hover%20effects%20to%20a%20button%20in%20JavaScript%2C%20you,or%20exits%20the%20button's%20area.&text=%2F%2F%20Get%20the%20button%20element,a%20mouseover%20event%20listener%20button.
 const button = document.querySelector('.head');
-
-// button.addEventListener('mouseover', () => {
-//   button.style.color = '#141414';
-// });
-
-// button.addEventListener('mouseout', () => {
-//   button.style.color = '';
-// });
 
 const element = document.querySelector('p')
 var rect = element.getBoundingClientRect();
@@ -173,76 +144,75 @@ window.addEventListener("scroll", (event) => {
   }
 })
 
-const element2 = document.querySelector('#oppie_list')
+const element2 = document.querySelector('#breakingbad_list')
 var rect = element2.getBoundingClientRect();
 console.log(rect.top, rect.right, rect.bottom, rect.left);
-var oppie = rect.top + document.documentElement.scrollTop;
+var breakingbad = rect.top + document.documentElement.scrollTop;
 
 window.addEventListener("scroll", (event) => {
     let scroll = this.scrollY;
-    if (scroll > oppie) {
-      document.querySelector("#oppie_list").classList.add("fixed");
+    if (scroll > breakingbad) {
+      document.querySelector("#breakingbad_list").classList.add("fixed");
     } else {
-      document.querySelector("#oppie_list").classList.remove("fixed");
+      document.querySelector("#breakingbad_list").classList.remove("fixed");
     }
   });
 
-const element3 = document.querySelector('#dune_list')
+const element3 = document.querySelector('#succession_list')
   var rect = element3.getBoundingClientRect();
   console.log(rect.top, rect.right, rect.bottom, rect.left);
-  var dune = rect.top + document.documentElement.scrollTop;
+  var succession = rect.top + document.documentElement.scrollTop;
   
   window.addEventListener("scroll", (event) => {
       let scroll = this.scrollY;
-      if (scroll > dune) {
-        document.querySelector("#dune_list").classList.add("fixed");
+      if (scroll > succession) {
+        document.querySelector("#succession_list").classList.add("fixed");
       } else {
-        document.querySelector("#dune_list").classList.remove("fixed");
+        document.querySelector("#succession_list").classList.remove("fixed");
       }
     });
 
-const element4 = document.querySelector('#tenet_list')
+const element4 = document.querySelector('#dark_list')
     var rect = element4.getBoundingClientRect();
     console.log(rect.top, rect.right, rect.bottom, rect.left);
-    var tenet = rect.top + document.documentElement.scrollTop;
+    var dark = rect.top + document.documentElement.scrollTop;
     
     window.addEventListener("scroll", (event) => {
         let scroll = this.scrollY;
-        if (scroll > tenet) {
-          document.querySelector("#tenet_list").classList.add("fixed");
+        if (scroll > dark) {
+          document.querySelector("#dark_list").classList.add("fixed");
         } else {
-          document.querySelector("#tenet_list").classList.remove("fixed");
+          document.querySelector("#dark_list").classList.remove("fixed");
         }
       });
 
-const element5 = document.querySelector('#topgun_list')
+const element5 = document.querySelector('#ted_list')
     var rect = element5.getBoundingClientRect();
     console.log(rect.top, rect.right, rect.bottom, rect.left);
-    var topgun = rect.top + document.documentElement.scrollTop;
+    var ted = rect.top + document.documentElement.scrollTop;
     
     window.addEventListener("scroll", (event) => {
         let scroll = this.scrollY;
-        if (scroll > topgun) {
-          document.querySelector("#topgun_list").classList.add("fixed");
+        if (scroll > ted) {
+          document.querySelector("#ted_list").classList.add("fixed");
         } else {
-          document.querySelector("#topgun_list").classList.remove("fixed");
+          document.querySelector("#ted_list").classList.remove("fixed");
         }
       });
 
-const element6 = document.querySelector('#batman_list')
+const element6 = document.querySelector('#black_list')
     var rect = element6.getBoundingClientRect();
     console.log(rect.top, rect.right, rect.bottom, rect.left);
-    var batman = rect.top + document.documentElement.scrollTop;
+    var black = rect.top + document.documentElement.scrollTop;
     
     window.addEventListener("scroll", (event) => {
         let scroll = this.scrollY;
-        if (scroll > batman) {
-          document.querySelector("#batman_list").classList.add("fixed");
+        if (scroll > black) {
+          document.querySelector("#black_list").classList.add("fixed");
         } else {
-          document.querySelector("#batman_list").classList.remove("fixed");
+          document.querySelector("#black_list").classList.remove("fixed");
         }
       });
-      
 
 // Source: https://www.youtube.com/watch?v=MBaw_6cPmAw
 
@@ -262,13 +232,6 @@ overlay.addEventListener('click', () => {
   const learnts = document.querySelectorAll('#learnt.active')
   learnts.forEach(learnt => {
     closeButton(learnt)
-  })
-})
-
-overlay.addEventListener('click', () => {
-  const maps = document.querySelectorAll('#map.active')
-  maps.forEach(mapped => {
-    closeButton(mapped)
   })
 })
 
@@ -292,19 +255,3 @@ function closeButton(learnt) {
   overlay.classList.remove('active')
   element9.style.overflowY = 'scroll'
 }
-
-const mapButtons = document.querySelectorAll('[data-map-target]')
-
-mapButtons.forEach(button => {
-  button.addEventListener('click', () => {
-    const mapped = document.querySelector(button.dataset.mapTarget)
-    openButton(mapped)
-  })
-})
-
-closeButtons.forEach(button => {
-  button.addEventListener('click', () => {
-    const mapped = button.closest('#map')
-    closeButton(mapped)
-  })
-})

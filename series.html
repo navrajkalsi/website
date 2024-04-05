@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Favourite Series</title>
+    <link rel="stylesheet" href="Resources/Styles/fonts.css">
+    <link rel="stylesheet" href="Resources/Styles/series.css">
+    <link rel="shortcut icon" href="Resources/Icons/animoji.ico">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+<body>
+    <nav id="navigation">
+        <div class="left">
+            <a href="movies.html">Movies</a>
+        </div>
+        <div class="right">
+            <a href="music.html">Music</a>
+        </div>
+    </nav>
+    
+    <header>
+        <a href="index.html"><span class="head">NavThinks</span></a>
+    </header>
+
+    <p>
+        <div style="color: #141414; font-family: 'aptos';">
+            <h2>I used to watch a lot of TV Shows</h2>This page contains an unordered list of some of my favourite shows.
+        </div>
+    </p>
+
+    <ul id="series_list">
+        <li id="breakingbad_list">
+            <img class="image_breakingbad" src="Resources/Images/Series/breakingbad1.jpg" alt="">
+            <img class="image_breakingbad" src="Resources/Images/Series/breakingbad2.jpg" alt="">
+            <img class="image_breakingbad" src="Resources/Images/Series/breakingbad3.jpg" alt="">
+            <span><strong>Source:</strong> Sony Pictures Television</span>
+        </li>
+        <span class="breakingbad">Breaking Bad</span>
+        <div></div>
+        
+        <li id="dark_list">
+            <img class="image_dark" src="Resources/Images/Series/dark1.jpg" alt="">
+            <img class="image_dark" src="Resources/Images/Series/dark2.jpg" alt="">
+            <img class="image_dark" src="Resources/Images/Series/dark3.jpg" alt="">
+            <span><strong>Source:</strong> Netflix</span>
+        </li>
+        <span class="dark" style="text-align: right;">Dark</span>
+        <div></div>
+
+        <li id="ted_list">
+            <img class="image_ted" src="Resources/Images/Series/ted1.jpg" alt="">
+            <img class="image_ted" src="Resources/Images/Series/ted2.jpg" alt="">
+            <img class="image_ted" src="Resources/Images/Series/ted3.jpg" alt="">
+            <span><strong>Source:</strong> Apple TV+</span>
+        </li>
+        <span class="ted">Ted Lasso</span>
+        <div></div>
+        
+        <li id="black_list">
+            <img class="image_black" src="Resources/Images/Series/blackmirror1.jpg" alt="">
+            <img class="image_black" src="Resources/Images/Series/blackmirror2.jpg" alt="">
+            <img class="image_black" src="Resources/Images/Series/blackmirror3.jpg" alt="">
+            <span><strong>Source:</strong> Zeppotron</span>
+        </li>
+        <span class="black" style="text-align: right;">Black Mirror</span>
+        <div></div>
+
+        <li id="succession_list">
+            <img class="image_succession" src="Resources/Images/Series/succession1.jpg" alt="">
+            <img class="image_succession" src="Resources/Images/Series/succession2.jpg" alt="">
+            <img class="image_succession" src="Resources/Images/Series/succession3.jpg" alt="">
+            <span><strong>Source:</strong> HBO</span>
+        </li>
+        <span class="succession">Succession</span>
+        <div></div>
+
+    </ul>
+    
+    <p class="end_list">Other mentions:</p>
+
+    <div class="slide">
+        <div class="series">
+            <div>Chernobyl</div>
+            <div>Better Call Saul</div>
+            <div>Ozark</div>
+            <div>The Last Dance</div>
+            <div>Peaky Blinders</div>
+            <div>Shrinking</div>
+        </div>
+        <div class="series">
+            <div>Chernobyl</div>
+            <div>Better Call Saul</div>
+            <div>Ozark</div>
+            <div>The Last Dance</div>
+            <div>Peaky Blinders</div>
+            <div>Shrinking</div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="series">
+            <div>Lupin</div>
+            <div>The Line</div>
+            <div>For All Mankind</div>
+            <div>Servant</div>
+            <div>Kota Factory</div>
+        </div>
+        <div class="series">
+            <div>Lupin</div>
+            <div>The Line</div>
+            <div>For All Mankind</div>
+            <div>Servant</div>
+            <div>Kota Factory</div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="series">
+            <div>Yellowstone</div>
+            <div>1923</div>
+            <div>Black Bird</div>
+            <div>The Sandman</div>
+            <div>1899</div>
+            <div>Drops of God</div>
+        </div>
+        <div class="series">
+            <div>Yellowstone</div>
+            <div>1923</div>
+            <div>Black Bird</div>
+            <div>The Sandman</div>
+            <div>1899</div>
+            <div>Drops of God</div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="series">
+            <div>1883</div>
+            <div>Mindhunter</div>
+            <div>Silo</div>
+            <div>Serverance</div>
+            <div>Aspirants</div>
+        </div>
+        <div class="series">
+            <div>1883</div>
+            <div>Mindhunter</div>
+            <div>Silo</div>
+            <div>Serverance</div>
+            <div>Aspirants</div>
+        </div>
+    </div>
+
+    <button data-learnt-target="#learnt" id="learning" type="button">What I learned while building this page.&nbsp;
+        <div style="display: inline-block;"><img style="height: 4vh;" src="Resources/Icons/menu_1.png" alt=""></div>
+    </button>
+
+    <div id="learnt">
+        <div id="learnt_header">
+            <div id="learnt_title">What I learned.</div>
+            <button data-close-button id="learnt_close" type="button">&times;</button>
+        </div>
+        <div id="learnt_body">Did not learn much from this as most of the code is reused from the <strong>Movies</strong> page.<br>Anyways,<br><br>Thanks for visiting!</div>
+    </div>
+    <div id="overlay"></div>
+
+    <nav id="socials">My Socials:<div id="socials_list">
+        <div class="app"><a href="https://twitter.com/navrajkalsi" target="_blank"><img src="Resources/Icons/twitter.png" alt="twitter/x logo"></a></div>
+        <div class="app"><a href="https://reddit.com/u/NavrajKalsi" target="_blank"><img src="Resources/Icons/reddit.png" alt="reddit logo"></a></div>
+        <div class="app"><a href="https://linkedin.com/in/navrajsinghkalsi" target="_blank"><img src="Resources/Icons/linkedin.png" alt="linkedin logo"></a></div>
+        <div class="app"><a href="https://github.com/navrajkalsi" target="_blank"><img src="Resources/Icons/github.png" alt="gihub logo"></a></div>
+    </div></nav>
+
+    <footer>
+        Copyright&copy; 2024 Navraj Singh Kalsi
+    </footer>
+
+    <script src="Resources/Scripts/series.js"></script>
+</body>
+</html>
