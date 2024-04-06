@@ -180,7 +180,7 @@ var oppie = rect.top + document.documentElement.scrollTop;
 
 window.addEventListener("scroll", (event) => {
     let scroll = this.scrollY;
-    if (scroll > oppie) {
+    if (scroll >= oppie) {
       document.querySelector("#oppie_list").classList.add("fixed");
     } else {
       document.querySelector("#oppie_list").classList.remove("fixed");
@@ -194,7 +194,7 @@ const element3 = document.querySelector('#dune_list')
   
   window.addEventListener("scroll", (event) => {
       let scroll = this.scrollY;
-      if (scroll > dune) {
+      if (scroll >= dune) {
         document.querySelector("#dune_list").classList.add("fixed");
       } else {
         document.querySelector("#dune_list").classList.remove("fixed");
@@ -208,7 +208,7 @@ const element4 = document.querySelector('#tenet_list')
     
     window.addEventListener("scroll", (event) => {
         let scroll = this.scrollY;
-        if (scroll > tenet) {
+        if (scroll >= tenet) {
           document.querySelector("#tenet_list").classList.add("fixed");
         } else {
           document.querySelector("#tenet_list").classList.remove("fixed");
@@ -222,7 +222,7 @@ const element5 = document.querySelector('#topgun_list')
     
     window.addEventListener("scroll", (event) => {
         let scroll = this.scrollY;
-        if (scroll > topgun) {
+        if (scroll >= topgun) {
           document.querySelector("#topgun_list").classList.add("fixed");
         } else {
           document.querySelector("#topgun_list").classList.remove("fixed");
@@ -236,7 +236,7 @@ const element6 = document.querySelector('#batman_list')
     
     window.addEventListener("scroll", (event) => {
         let scroll = this.scrollY;
-        if (scroll > batman) {
+        if (scroll >= batman) {
           document.querySelector("#batman_list").classList.add("fixed");
         } else {
           document.querySelector("#batman_list").classList.remove("fixed");

@@ -33,7 +33,7 @@ body {
 
 .head_active {
     z-index: 1000;
-    top: 0;
+    top: -1vh;
     left: 50%;
     transform: translate(-50%, 0) !important;
     width: fit-content;
@@ -61,7 +61,6 @@ body {
     padding: 0 4em;
     margin: -0.75%;
     background: none;
-    z-index: 999;
 }
 
 a {
@@ -156,7 +155,9 @@ ul {
             position: absolute;
             writing-mode: vertical-rl;
             text-orientation: mixed;
-            top: 1%;
+            top: 1vh;
+            animation: none;
+            transition: none;
             font-family: 'aptos';
             color: #eeeeee;
         }
