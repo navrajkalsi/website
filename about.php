@@ -292,7 +292,9 @@
         </div>
         <div class="code_body">
             <object data="/Resources/Resume.pdf">
-                <embed src="/Resources/Resume.pdf" type="application/pdf">
+                <img src="/Resources/resume1.jpg" alt="Image 1 of my Resume">
+                <img src="/Resources/resume2.jpg" alt="Image 2 of my Resume">
+                <span>This broswer does not support PDF embedding, please click on the download icon to download the document in PDF form.</span>
             </object>
             <span><a href="./Resources/Resume.pdf" download="Navraj Kalsi's Resume"><img src="./Resources/Icons/download.png"></a></span>
         </div>
@@ -309,8 +311,10 @@
         </div>
         <div class="code_body">
             <object data="/Resources/meta_database.pdf">
-                <embed src="/Resources/meta_database.pdf" type="application/pdf">
+                <img src="/Resources/meta_database.jpg" alt="Image of my Meta Database Engineer Course Certification">
+                <span>This broswer does not support PDF embedding, please click on the download icon to download the document in PDF form.</span>
             </object>
+            <span><a href="./Resources/meta_database.pdf" download="Navraj Kalsi's Meta Database Engineer Certificate"><img src="./Resources/Icons/download.png"></a></span>
         </div>
     </div>
 

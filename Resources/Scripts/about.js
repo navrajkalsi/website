@@ -72,6 +72,7 @@ ScrollTrigger.create({
   }
   
   window.addEventListener("resize", (event) => {
+    window.location.reload();
     if(window.innerWidth <= 600) {
       mobile()
     }
@@ -405,15 +406,15 @@ const div_m = document.getElementById('models').querySelector('.code_body').quer
 
 visualViewport.onresize = () => {
     div_m.forEach(model => {
-        model.querySelector('model-viewer').style.width = document.body.offsetWidth/3.26 + 'px'
-        model.querySelector('model-viewer').style.height = document.body.offsetWidth/3 + 'px'
+        model.querySelector('model-viewer').style.width = model.offsetWidth + 'px'
+        model.querySelector('model-viewer').style.height = model.offsetHeight + 'px'
     })
 }
 
 window.onload = () => {
     div_m.forEach(model => {
-        model.querySelector('model-viewer').style.width = document.body.offsetWidth/3.26 + 'px'
-        model.querySelector('model-viewer').style.height = document.body.offsetWidth/3 + 'px'
+        model.querySelector('model-viewer').style.width = model.offsetWidth + 'px'
+        model.querySelector('model-viewer').style.height = model.offsetHeight + 'px'
     })
 }
 

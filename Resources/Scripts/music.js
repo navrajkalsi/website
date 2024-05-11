@@ -72,6 +72,7 @@ else {
 }
 
 window.addEventListener("resize", (event) => {
+  window.location.reload();
   if(window.innerWidth <= 600) {
     mobile()
   }

@@ -426,6 +426,7 @@ li:last-of-type .content {
 }
 
 button {
+    color: #141414;
     width: fit-content;
     align-self: center;
     background: transparent;
@@ -713,20 +714,30 @@ pre::-webkit-scrollbar {
     .code_body {
         display: block;
         overflow: hidden;
+        overflow-y: scroll;
         padding-top: 17vh;
         padding-bottom: 3vh;
     
         object {
             border-radius: 20px;
+            max-width: 100%;
             width: 100%;
             height: 100%;
             position: relative;
 
-            embed {
-                border-radius: 15px;
+            >span {
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                font-family: 'aptos';
+                padding: 2%;
                 width: 100%;
-                height: 100%;
-                position: relative;
+                background-color: #141414;
+            }
+
+            img {
+                max-width: 100%;
+                object-fit: cover;
             }
         }
 
@@ -734,10 +745,9 @@ pre::-webkit-scrollbar {
             transform: scale(105%);
         }
 
-        span {
+        >span {
             border-radius: 100%;
             position: absolute;
-            margin: 0;
             bottom: 7%;
             right: 6%;
             width: 8vh;
@@ -786,12 +796,12 @@ footer {
         display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
-        column-gap: 1vw;
-        padding: 22vh 1vw 0 1vw;
+        column-gap: 1vmax;
+        padding: 22vmin 1vmax 0 1vmax;
 
         >div {
-            height: fit-content;
             flex: 1;
+            height: 90%;
             border-radius: 15px;
             background-color: #191919;
 
@@ -892,5 +902,25 @@ footer {
 
     #site_card {
         flex-direction: column;
+    }
+
+    #models {
+        .code_body {
+            flex-direction: column;
+        }
+    }
+
+    #resume,
+    #certificate,
+    #models {
+
+        .code_body {
+
+            >span {
+                padding: 1.5%;
+                margin: 2%;
+            }
+        }
+
     }
 }
