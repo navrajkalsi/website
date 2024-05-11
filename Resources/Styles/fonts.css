@@ -1,58 +1,49 @@
 @font-face {
     font-family: 'aquirebold';
     src: url("../Fonts/aquirebold-8ma60-webfont.woff2") format('woff2'),
-         url("../Fonts/aquirebold-8ma60-webfont.woff") format('woff');
-    font-weight: normal;
-    font-style: normal;
-
+        url("../Fonts/aquirebold-8ma60-webfont.woff") format('woff');
 }
-
-
-
 
 @font-face {
     font-family: 'aquirelight';
     src: url("../Fonts/aquirelight-yze0o-webfont.woff2") format('woff2'),
-         url("../Fonts/aquirelight-yze0o-webfont.woff") format('woff');
-    font-weight: normal;
-    font-style: normal;
-
+        url("../Fonts/aquirelight-yze0o-webfont.woff") format('woff');
 }
-
-
-
 
 @font-face {
     font-family: 'aquireregular';
     src: url("../Fonts/aquire-bw0ox-webfont.woff2") format('woff2'),
-         url("../Fonts/aquire-bw0ox-webfont.woff") format('woff');
-    font-weight: normal;
-    font-style: normal;
-
+        url("../Fonts/aquire-bw0ox-webfont.woff") format('woff');
 }
 
 @font-face {
     font-family: 'aptos';
     src: url("../Fonts/aptos.woff2") format('woff2'),
-         url("../Fonts/aptos.woff") format('woff');
-    font-weight: normal;
-    font-size: normal;
+        url("../Fonts/aptos.woff") format('woff');
 }
 
 @font-face {
     /* Source: https://www.lewismcguffie.com/Tusker-Grotesk-Typeface */
     font-family: 'Tusker Grotesk SB 4600';
     src: url("../Fonts/TuskerGrotesk-4600Semibold.woff2") format('woff2'),
-         url("../Fonts/TuskerGrotesk-4600Semibold.woff") format('woff');
-    font-weight: normal;
-    font-size: normal;
+        url("../Fonts/TuskerGrotesk-4600Semibold.woff") format('woff');
 }
 
 @font-face {
     /* Source: https://www.lewismcguffie.com/Tusker-Grotesk-Typeface */
     font-family: 'Tusker Grotesk SB 3600';
     src: url("../Fonts/TuskerGrotesk-3600Semibold.woff2") format('woff2'),
-         url("../Fonts/TuskerGrotesk-3600Semibold.woff") format('woff');
-    font-weight: normal;
-    font-size: normal;
+        url("../Fonts/TuskerGrotesk-3600Semibold.woff") format('woff');
+}
+
+@font-face {
+    /* Source: https://www.lewismcguffie.com/Tusker-Grotesk-Typeface */
+    font-family: 'Tusker Grotesk M 5500';
+    src: url("../Fonts/TuskerGrotesk-5500Medium.woff2") format('woff2'),
+        url("../Fonts/TuskerGrotesk-5500Medium.woff") format('woff');
+}
+
+@font-face {
+    font-family: 'JetBrains';
+    src: url("../Fonts/JetBrainsMono-Regular.woff2") format('woff2');
 }

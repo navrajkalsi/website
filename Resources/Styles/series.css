@@ -5,6 +5,8 @@
 }
 
 html {
+    width: 100vw;
+    max-width: 100vw;
     padding: 0.75%;
     border-radius: 5px;
     background-color: black;
@@ -18,22 +20,54 @@ html::-webkit-scrollbar {
     display: none; 
 }
 
+#loader {
+    z-index: 1010;
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    background-color: #000000;
+    height: 100vh;
+    align-content: center;
+    justify-content: center;
+    overflow: hidden;
+
+    img {
+        width: 40vmax;
+        height: auto;
+        margin: auto;
+    }
+}
+
 .addB {
     background: #141414;
 }
 
 body {
+    width: 100%;
+    font-size: 100%;
+    display: flex;
+    flex-direction: column;
     transition: 1s ease-in-out;
-    background-color: #f2f2f2;
+    background-color: #000000;
     border-radius: 5px;
     background-image: url("../Images/gradient_ultimate.png");
     background-size: contain;
     background-repeat: repeat-y;
 }
 
+#first {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
 .head_active {
+    position: fixed;
+    padding: 0;
+    height: fit-content;
     z-index: 1000;
-    top: -1vh;
     left: 50%;
     transform: translate(-50%, 0) !important;
     width: fit-content;
@@ -45,23 +79,77 @@ body {
 }
 
 .nav_active {
-    div a {
-        color: #eeeeee;
-    }
+    visibility: hidden;
+    content-visibility: hidden;
+    display: none;
 }
 
 #navigation {
     position: fixed;
-    width: 100%;
-    height: 100px;
+    width: 98.5vw;
+    height: 8vmax;
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: space-between;
     z-index: 998;
-    padding: 0 4em;
-    margin: -0.75%;
+    padding: 0 5vw;
     background: none;
-    z-index: 999;
+}
+
+#navigation2 {
+    visibility: hidden;
+    content-visibility: hidden;
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    z-index: 998;
+    padding: 0 5vw;
+    background-color: black;
+    height: fit-content;
+    align-items: center;
+
+    a {
+        color: #eeeeee;
+        width: fit-content;
+        height: fit-content;
+    }
+
+    #center {
+        grid-column: 2;
+        width: fit-content;
+        justify-self: center;
+        height: fit-content;
+
+        a {
+            font-family: 'aquirebold';
+            font-size: 5vmax;
+        }
+    }
+
+    .left {
+        text-align: left;
+        grid-column: 1;
+        width: fit-content;
+        justify-self: left;
+        height: fit-content;
+    }
+
+    .right {
+        grid-column: 3;
+        text-align: right;
+        width: fit-content;
+        justify-self: right;
+        height: fit-content;
+    }
+}
+
+.nav2_active {
+    visibility: visible !important;
+    content-visibility: visible !important;
+    display: grid !important;
 }
 
 a {
@@ -83,10 +171,16 @@ a {
 }
 
 header {
-    position: sticky;
-    top: -12vh;
-    font-size: 500%;
+    margin: auto;
+    align-self: center;
+    justify-self: center;
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    width: fit-content;
+    font-size: 8vmax;
     z-index: 999;
+    padding-top: 15vh;
     align-content: center;
 
     a {
@@ -103,9 +197,17 @@ header {
 
 p {
     width: 100%;
-    height: 55vh;
     position: relative;
-    z-index: -1;
+}
+
+#opening {
+    color: #141414;
+    font-family: 'aptos';
+    font-size: 1rem;
+    max-width: 75vw;
+    align-self: center;
+    cursor: none;
+    margin-bottom: 20vh;
 }
 
 @keyframes show {
@@ -114,6 +216,7 @@ p {
 
 .fixed {
     top: 0vh;
+    left: 0vw;
     position: sticky;
 }
 
@@ -126,8 +229,7 @@ p {
 }
 
 ul {
-    margin-top: -30vh;
-    padding: 0;
+    padding: 50vh 0;
     width: 100%;
     position: relative;
     z-index: 1000;
@@ -142,7 +244,6 @@ ul {
         opacity: 0;
         width: 100%;
         margin: 0;
-        padding: -30vh 0 0 0;
         position: relative;
 
         img {
@@ -157,7 +258,10 @@ ul {
             position: absolute;
             writing-mode: vertical-rl;
             text-orientation: mixed;
-            top: 1%;
+            top: 1vh;
+            font-size: 1rem;
+            animation: none;
+            transition: none;
             font-family: 'aptos';
             color: #eeeeee;
         }
@@ -168,7 +272,7 @@ ul {
         opacity: 0;
         display: block;
         color: #fff;
-        font-size: 1000%;
+        font-size: 11vmax;
         font-family: 'Tusker Grotesk SB 3600';
         animation: showSpan 1s ease-in-out forwards;
         animation-timeline: view(75vh 25vh);
@@ -176,8 +280,12 @@ ul {
 
     > div {
         opacity: 0;
+        text-align: center;
         margin-top: 55vh;
         height: 25vh;
+        color: white;
+        font-size: 1.25rem;
+        font-family: 'aptos';
     }
 }
 
@@ -206,21 +314,21 @@ footer {
 }
 
 .end_list {
-    height: 25vh;
-    z-index: inherit;
+    width: fit-content;
     color: #141414;
     font-family: 'Tusker Grotesk SB 3600';
-    font-size: 750%;
+    font-size: 8vmax;
     text-align: left;
-    margin: 15vh 5vw 0 5vw;
+    padding-top: 25vmax;
+    margin: 15vmax auto 3vh 3vw;
 }
 
 .slide {
-    width: 100%;
+    width: 100vw;
     white-space: nowrap;
     overflow: hidden;
     position: relative;
-    margin: 8vh 0;
+    margin: 5vmin 0;
 }
 
 @keyframes slide_rl {
@@ -248,9 +356,10 @@ footer {
 
     div {
         display: inline-block;
-        padding: 0 4vw;
+        padding: 0 4vmax;
         font-family: 'aptos';
         color: #141414;
+        font-size: 1em;
     }
 }
 
@@ -263,14 +372,15 @@ footer {
 }
 
 #socials {
-    margin-top: 3%;
-    width: 100%;
+    margin-top: 2%;
+    width: 100vw;
     font-family: 'aptos';
-    font-size: 175%;
+    font-size: 2vmax;
     font-weight: 700;
 
     #socials_list {
-        margin: 0;
+        margin: 2vmax auto;
+        height: 4.5vmax;
         padding: 0 5%;
         display: flex;
         align-items: center;
@@ -278,15 +388,17 @@ footer {
         animation: none;
 
         .app {
-            margin-top: 1.5%;
             padding: 0 3%;
-            display: inline-block;
-            transform: scale(75%);
-            animation: none;
+            height: 100%;
+
+            a {
+                height: 100%;
+                width: 100%;
+            }
 
             img {
-                animation: none;
-                display: block;
+                max-width: 100%;
+                max-height: 100%;
             }
         }
     }
@@ -327,16 +439,15 @@ li:nth-of-type(even) span {
 
 #learnt_header {
     font-family: 'Tusker Grotesk SB 3600';
-    font-size: 300%;
+    font-size: 4vmax;
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-bottom: 2px solid #141414;
-    padding: 2% 2% 5% 2%;
+    padding: 1vmax 3vmax 3vmax 2vmax;
 }
 
 #learnt_close {
-    padding: 0% 0.5% 0 0;
     font-weight: 600;
     color: #eeeeee;
     transform: scale(350%);
@@ -344,6 +455,8 @@ li:nth-of-type(even) span {
 
 #overlay {
     position: fixed;
+    max-height: 100vh;
+    max-width: 100vw;
     transition: 0.5s ease-in-out;
     opacity: 0;
     top: 0;
@@ -361,12 +474,12 @@ li:nth-of-type(even) span {
 }
 
 button {
+    color: #141414;
     background: transparent;
     outline: none;
     border: none;
     cursor: pointer;
     transition: 0.5s ease-in-out;
-    height: 100%;
 }
 
 button:hover {
@@ -374,16 +487,68 @@ button:hover {
 }
 
 #learning {
-    display: inline-block;
+    max-width: 80vw;
+    display: grid;
+    align-self: center;
+    margin: 2vmax auto 4vmax auto;
     font-family: 'aptos';
-    font-size: 140%;
-    margin: 2%;
+    font-size: 1.5vmax;
+    grid-template-rows: min-content;
     z-index: 999;
+
+    div {
+        grid-column: 2;
+        height: 1em;
+
+        img {
+            display: block;
+            height: 100%;
+        }
+    }
 }
 
 #learnt_body {
+    max-width: 95%;
     font-family: 'aptos';
-    font-size: 125%;
+    font-size: 1.4vmax;
     line-height: 200%;
-    margin: 0 auto 5vh auto;
+    margin: 0 auto 5vmin auto;
+}
+
+@media only screen and (max-width: 600px) {
+    body {
+        background-image: url("../Images/gradient_phone.png");
+        border-radius: 25px;
+    }
+
+    html {
+        padding: 0;
+        border-radius: 25px;
+    }
+
+    #navigation {
+        width: 100vw;
+    }
+
+    #navigation2 {
+        max-height: 15vh;
+
+        #center {
+            grid-row: 1;
+            grid-column: 1/4;
+        }
+        .left,
+        .right {
+            grid-row: 2;
+            padding: 0 0 2vmin 0;
+        }
+    }
+
+    ul {
+        padding: 40vh 0 !important;
+    }
+
+    ul > div {
+        margin-top: 65vh;
+    }
 }

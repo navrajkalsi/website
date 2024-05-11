@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#000000">
     <title>My Music Library</title>
     <link rel="stylesheet" href="Resources/Styles/music.css">
     <link rel="stylesheet" href="Resources/Styles/fonts.css">
@@ -10,32 +11,36 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 </head>
+
+<div id="loader" fetchpriority="veryhigh"><img src="/Resources/Images/loader.gif" fetchpriority="veryhigh"></div>
+
 <body>
     <nav id="navigation">
-        <div id="left">
-            <a href="series.html">Series</a>
+        <div id="left" class="link"> 
+            <a href="series.html">TV Shows</a>
         </div>
-        <div id="right">
+        <header id="center">
+            <a href="index.html"><span id="head">NavThinks</span></a>
+        </header>
+        <div id="right" class="link">
             <a href="movies.html">Movies</a>
         </div>
     </nav>
 
-    <header>
-        <a href="index.html"><span id="head">NavThinks</span></a>
-    </header>
-
-    <p>
-        <div style="color: #141414; font-family: 'aptos';">
+    <div id="first">
+        <div id="opening">
             <h2>I cannot function without some music playing:)</h2><br>This page contains my Spotify & Apple Music music libraries.
         </div>
-    </p>
+    </div>
+
+    <p id="spacer" style="height: 0;"></p>
 
     <iframe id="spotify" src="https://open.spotify.com/embed/playlist/4x5lTfTnSoclTEer0BJ9m1?utm_source=generator&theme=0" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture" loading="lazy"></iframe>
 
     <iframe id="apple_music" allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/ca/playlist/cloudfavoritesmusiccontainer-name/pl.u-GPUo91WKxR"></iframe>
 
     <button data-learnt-target="#learnt" id="learning" type="button">What I learned while building this page.&nbsp;
-        <div style="display: inline-block;"><img style="height: 4vh;" src="Resources/Icons/menu_1.png" alt=""></div>
+        <div><img src="Resources/Icons/menu_1.png" alt=""></div>
     </button>
 
     <div id="learnt">

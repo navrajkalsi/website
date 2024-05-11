@@ -5,6 +5,8 @@
 }
 
 html {
+    width: 100vw;
+    max-width: 100vw;
     padding: 0.75%;
     border-radius: 5px;
     background-color: black;
@@ -18,46 +20,90 @@ html::-webkit-scrollbar {
     display: none;
 }
 
+#loader {
+    z-index: 1010;
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    background-color: #000000;
+    height: 100vh;
+    align-content: center;
+    justify-content: center;
+    overflow: hidden;
+
+    img {
+        width: 40vmax;
+        height: auto;
+        margin: auto;
+    }
+}
+
 body {
+    width: 100%;
+    font-size: 100%;
+    display: flex;
+    flex-direction: column;
     transition: 1s ease-in-out;
-    background-color: #f2f2f2;
+    background-color: #000000;
     border-radius: 5px;
     background-image: url("../Images/gradient_ultimate.png");
     background-size: contain;
     background-repeat: repeat-y;
 }
 
-@keyframes black_nav {
-    to {background-color: black;}
-}
-
-@keyframes black_div {
-    to {color: #eeeeee}
-}
-
-@keyframes black_head {
-    to {color: white;}
+#first {
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
 }
 
 #navigation {
+    top: 0;
+    left: 0;
     position: fixed;
-    width: 100%;
-    height: 100px;
-    display: flex;
+    width: 100vw;
+    height: fit-content;
+    display: grid;
     align-items: center;
-    justify-content: space-between;
     z-index: 998;
-    padding: 0 4em;
-    margin: -0.75%;
-    background: none;
-    animation: black_nav ease-in-out forwards;
-    animation-timeline: scroll();
-    animation-range-end: 50vh; /*Set same as the height of head from top*/
+    padding: 0 5vw;
+    background: #000000;
 
     a {
-        animation: black_div forwards;
-        animation-timeline: scroll();
-        animation-range-end: 50vh; /*Set same as the height of head from top*/
+        color: #eeeeee;
+        width: fit-content;
+        height: fit-content;
+    }
+
+    #center {
+        grid-column: 2;
+        width: fit-content;
+        height: fit-content;
+        justify-self: center;
+        
+        a {
+            font-family: 'aquirebold';
+            font-size: 5vmax;
+            color: #eeeeee;
+        }
+    }
+
+    #left {
+        text-align: left;
+        grid-column: 1;
+        width: fit-content;
+        height: fit-content;
+        justify-self: left;
+    }
+
+    #right {
+        grid-column: 3;
+        text-align: right;
+        width: fit-content;
+        height: fit-content;
+        justify-self: right;
     }
 }
 
@@ -67,7 +113,8 @@ a {
     font-family: 'aptos';
 }
 
-#left, #right {
+#left,
+#right {
     transition: 1s;
 
     a {
@@ -75,26 +122,27 @@ a {
     }
 }
 
-#left:hover, #right:hover {
+#left:hover,
+#right:hover {
     transform: scale(125%);
 }
 
 header {
-    position: fixed;
-    top: -1vh;
-    left: 50vw;
-    transform: translateX(-50%);
-    font-size: 500%;
-    z-index: 998;
+    align-self: center;
+    justify-self: center;
+    display: flex;
+    justify-content: center;
+    justify-self: center;
+    width: fit-content;
+    top: 0;
+    font-size: 8vmax;
+    z-index: 999;
     align-content: center;
 
     a {
         font-family: 'aquirebold';
         align-self: center;
         color: #141414;
-        animation: black_head forwards;
-        animation-timeline: scroll();
-        animation-range-end: 50vh;
     }
 
     #head {
@@ -102,40 +150,41 @@ header {
     }
 }
 
-p {
-    position: relative;
-    width: 100%;
-    height: 69vh;
-    z-index: -1;
+#opening {
+    color: #141414;
+    font-family: 'aptos';
+    font-size: 1rem;
+    max-width: 75vw;
+    align-self: center;
+    cursor: none;
+    margin: auto auto 20vh auto;
 }
 
 #spotify {
-    padding-top: 10vh;
-    top: 100vh;
+    margin-top: 10vh;
 }
 
-#apple_music {
-    top: 175vh;
-}
-
-#spotify, #apple_music {
-    position: absolute;
-    left: 50vw;
-    transform: translateX(-50%);
+iframe {
+    margin: 10vmax auto;
+    align-self: center;
+    justify-self: center;
+    box-shadow: 0 0 20px 20px #18191a;
     width: 55vw;
-    height: 60vh;
-    border-radius: 10px;
+    height: 55vh;
+    border-radius: 15px;
+    overflow: hidden;
 }
 
 #socials {
-    margin-top: 3%;
-    width: 100%;
+    margin-top: 2;
+    width: 100vw;
     font-family: 'aptos';
-    font-size: 175%;
+    font-size: 2vmax;
     font-weight: 700;
 
     #socials_list {
-        margin: 0;
+        margin: 2vmax auto;
+        height: 4.5vmax;
         padding: 0 5%;
         display: flex;
         align-items: center;
@@ -143,15 +192,17 @@ p {
         animation: none;
 
         .app {
-            margin-top: 1.5%;
             padding: 0 3%;
-            display: inline-block;
-            transform: scale(75%);
-            animation: none;
+            height: 100%;
+
+            a {
+                height: 100%;
+                width: 100%;
+            }
 
             img {
-                animation: none;
-                display: block;
+                max-width: 100%;
+                max-height: 100%;
             }
         }
     }
@@ -183,16 +234,15 @@ p {
 
 #learnt_header {
     font-family: 'Tusker Grotesk SB 3600';
-    font-size: 300%;
+    font-size: 4vmax;
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-bottom: 2px solid #141414;
-    padding: 2% 2% 5% 2%;
+    padding: 1vmax 3vmax 3vmax 2vmax;
 }
 
 #learnt_close {
-    padding: 0% 0.5% 0 0;
     font-weight: 600;
     color: #eeeeee;
     transform: scale(350%);
@@ -200,6 +250,8 @@ p {
 
 #overlay {
     position: fixed;
+    max-height: 100vh;
+    max-width: 100vw;
     transition: 0.5s ease-in-out;
     opacity: 0;
     top: 0;
@@ -217,12 +269,13 @@ p {
 }
 
 button {
+    width: fit-content;
+    color: #141414;
     background: transparent;
     outline: none;
     border: none;
     cursor: pointer;
     transition: 0.5s ease-in-out;
-    height: 100%;
 }
 
 button:hover {
@@ -230,23 +283,71 @@ button:hover {
 }
 
 #learning {
-    display: inline-block;
+    max-width: 80vw;
+    display: grid;
+    align-self: center;
+    margin: 2vmax auto 4vmax auto;
     font-family: 'aptos';
-    font-size: 140%;
-    margin: 2%;
-    margin-top: 100vh;
+    font-size: 1.5vmax;
     z-index: 999;
+
+    div {
+        grid-column: 2;
+        height: 1em;
+
+        img {
+            display: block;
+            height: 100%;
+        }
+    }
 }
 
 #learnt_body {
+    max-width: 90%;
     font-family: 'aptos';
-    font-size: 125%;
+    font-size: 1.4vmax;
     line-height: 200%;
-    margin: 0 auto 5vh auto;
+    margin: 0 auto 5vmin auto;
 }
 
 footer {
     font-family: 'aptos';
     font-size: small;
     padding: 2% 0;
+}
+
+@media only screen and (max-width: 600px) {
+    body {
+        background-image: url("../Images/gradient_phone.png");
+        border-radius: 25px;
+    }
+
+    html {
+        padding: 0;
+        border-radius: 25px;
+    }
+
+    header {
+        position: fixed;
+        left: 50vw;
+        transform: translateX(-50%);
+    }
+
+    #navigation {
+        top: 0;
+        height: fit-content;
+        width: 100vw;
+        max-height: 15vh;
+        padding-top: 6.34vh;
+
+        #left,
+        #right {
+            padding: 0 0 2vmin 0;
+        }
+    }
+
+    iframe {
+        width: 80vw;
+        height: 50vh;
+    }
 }

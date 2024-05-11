@@ -1,28 +1,71 @@
-body {
+* {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --pseudo: paused;
+}
+
+#loader {
+    z-index: 1010;
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    background-color: #000000;
+    height: 100vh;
+    align-content: center;
+    justify-content: center;
+    overflow: hidden;
+
+    img {
+        width: 40vmax;
+        height: auto;
+        margin: auto;
+    }
+}
+
+body {
+    font-size: 100%;
+    display: flex;
+    flex-direction: column;
     background-color: #141414;
     border-radius: 5px;
-    align-items: center;
     text-align: center;
     color: #141414;
-    background-image: url("../Images/gradient_1.png"), url("../Images/gradient_2.png");/*bg image should be 16:9*/
-    background-repeat: no-repeat;
+    background-image: url("../Images/gradient_ultimate.png"), url("../Images/gradient_2.png");
+    /*bg image should be 16:9*/
+    background-repeat: repeat-y;
     background-size: contain;
-    background-position: top, bottom;
 }
 
 html {
-    padding: 0.25%;
+    width: 100vw;
+    padding: 0.75%;
     background-color: #000000;
     border-radius: 5px;
-    -ms-overflow-style: none;
+    -ms-overflow-style: none;   
     scrollbar-width: none;
 }
 
+#first {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 header {
+    display: flex;
+    align-items: center;
     background-color: transparent;
-    padding: 1% 1% 2% 1%;
-    font-size: 500%;
+    min-height: 10vh;
+    height: fit-content;
+    padding: 0;
+    font-size: 6vmax;
     font-family: 'aquirebold';
     color: #ff0000;
     animation: header 4s ease-in-out;
@@ -31,10 +74,13 @@ header {
 .head::before {
     content: "NavThinks";
     animation: span 5s ease-in-out;
+    animation-play-state: var(--pseudo);
 }
 
 .head {
-    transition: 0.6s;
+    height: fit-content;
+    transition: 0.5s;
+    width: 100%;
 }
 
 .head:hover {
@@ -45,7 +91,8 @@ header {
     0% {
         content: "Navraj Kalsi's";
         color: #141414;
-    }   
+        padding: 10% 0;
+    }
 
     50% {
         opacity: 0;
@@ -58,8 +105,9 @@ header {
 
     100% {
         content: "NavThinks";
+        padding: 0;
     }
-}   
+}
 
 @keyframes fadeIn {
     0% {
@@ -72,12 +120,12 @@ header {
 }
 
 .opening {
-    display: inline-block;
-    font-size: x-large;
+    font-size: 1.5rem;
     font-family: 'aptos ';
-    margin-top: 15%;
-    margin-bottom: 19%;
+    margin: auto;
     transition: 0.7s;
+    cursor: none;
+    max-width: 75vw;
 }
 
 .opening:hover {
@@ -86,17 +134,16 @@ header {
 
 @keyframes header {
     0% {
-        padding-top: 23.5vw;
-        padding-bottom: 23.5vw;
+        min-height: 100vh;
     }
 
     100% {
-        padding: 1% 1% 2% 1%;
+        min-height: 10vh;
     }
 }
 
 .arrow-container {
-    margin-top: 0.25%;
+    margin: 0.25% auto 1% auto;
     display: inline-flex;
     align-items: center;
     transition: 1s;
@@ -126,7 +173,7 @@ header {
         padding-top: 0;
         padding-bottom: 2%;
     }
-    
+
     50% {
         padding-top: 2%;
         padding-bottom: 0;
@@ -139,30 +186,41 @@ header {
 }
 
 .scroll-down {
-    margin-bottom: -2px;
+    margin: 0;
+    font-size: 0.9em;
 }
 
 .noBar::-webkit-scrollbar {
     display: none;
-  }
+}
 
-.about_p, .about_h {
+.about_p,
+.about_h {
     color: #eeeeee;
     font-family: 'aptos';
 }
 
 .about_h {
-    margin: 3% auto 2% 2%;
+    font-size: 2.25vmax;
+    margin: 3% auto 0 2%;
     text-align: left;
+    grid-column: 1;
+    grid-row: 1;
+    height: fit-content;
 }
 
 .about_p {
-    margin-left: 2%;
+    font-size: 1.25vmax;
+    margin: 4% 2%;
     text-align: left;
+    grid-column: 1;
+    grid-row: 2;
 }
 
 ul {
-    margin: 0 0;
+    margin: 2vmax auto;
+    height: 4.5vmax;
+    list-style-type: none;
     padding: 0 5%;
     display: flex;
     align-items: center;
@@ -170,27 +228,39 @@ ul {
 }
 
 li {
-    display: inline-block;
-    margin-top: 1.5%;
     padding: 0 3%;
-    transform: scale(75%);
+    height: 100%;
+
+    a {
+        height: 100%;
+        width: 100%;
+    }
+
+    img {
+        max-width: 100%;
+        max-height: 100%;
+    }
 }
 
 nav {
     font-family: 'aptos';
-    font-size: 175%;
+    font-size: 2vmax;
     font-weight: 700;
     margin-top: 2%;
 }
 
 .animoji {
+    margin: auto;
     display: block;
-    position: absolute;
-    transform: scale(20%);
-    right: -15%;
-    top: 62%;
-    float: right;
+    max-width: 12vw;
+    grid-column: 2;
+    grid-row-start: 1;
+    grid-row-end: 3;
     pointer-events: none;
+
+    img {
+        width: 100%;
+    }
 }
 
 /* From: https://www.youtube.com/watch?v=nAjR0Oj0J8E */
@@ -206,32 +276,38 @@ nav {
 }
 
 .pages {
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    min-height: 50vh;
     white-space: nowrap;
     overflow: hidden;
     position: relative;
 }
 
 .pages_slide {
-    padding: 4.5vw 0;
+    height: 100%;
+    padding: 5vmax 0;
     display: inline-block;
     animation: slide 20s infinite linear;
 }
 
 .card {
+    height: 100%;
     background-color: #18191a;
     box-sizing: content-box;
     padding: 0;
     position: relative;
     display: inline-block;
     height: fit-content;
-    width: 31vw;
+    width: 30vmax;
     transition: 0.5s ease-in-out;
-    margin: 0 5vw;
+    margin: 0 5vmax;
     border-color: #18191a;
     border-style: solid;
     border-width: 5px 5px 0 5px;
     border-radius: 10px;
-    box-shadow: 0 0 25px 25px #18191a;
+    box-shadow: 0 0 0.5vmax 0.5vmax #18191a;
 
     .title {
         display: block;
@@ -244,7 +320,7 @@ nav {
         color: white;
         font-family: 'aptos';
         font-weight: 1000;
-        font-size: 4.5vw;
+        font-size: 4.5vmax;
     }
 }
 
@@ -252,7 +328,7 @@ nav {
     transform: scale(105%);
 }
 
-.card_image{
+.card_image {
     width: 100%;
     height: auto;
     filter: blur(10px);
@@ -264,13 +340,16 @@ nav {
 }
 
 section {
-    padding-bottom: 2%;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
     background-color: #141414;
+    height: fit-content;
 }
 
 footer {
     font-family: 'aptos';
-    font-size: small;
+    font-size: 1vmax;
     padding: 2% 0;
 }
 
@@ -300,16 +379,15 @@ footer {
 
 #learnt_header {
     font-family: 'Tusker Grotesk SB 3600';
-    font-size: 300%;
+    font-size: 4vmax;
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-bottom: 2px solid #141414;
-    padding: 2% 2% 5% 2%;
+    padding: 1vmax 3vmax 3vmax 2vmax;
 }
 
 #learnt_close {
-    padding: 0% 0.5% 0 0;
     font-weight: 600;
     color: #eeeeee;
     transform: scale(350%);
@@ -317,11 +395,11 @@ footer {
 
 #overlay {
     position: fixed;
+    width: 100vw;
     transition: 0.5s ease-in-out;
     opacity: 0;
     top: 0;
     left: 0;
-    right: 0;
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.5);
     pointer-events: none;
@@ -329,16 +407,17 @@ footer {
 
 #overlay.active {
     opacity: 1;
+    z-index: 999;
     pointer-events: all;
 }
 
 button {
+    color: #141414;
     background: transparent;
     outline: none;
     border: none;
     cursor: pointer;
     transition: 0.5s ease-in-out;
-    height: 100%;
 }
 
 button:hover {
@@ -346,16 +425,72 @@ button:hover {
 }
 
 #learning {
-    display: inline-block;
+    margin: 2vmax auto 4vmax auto;
+    display: grid;
+    max-width: 80vw;
+    align-self: center;
     font-family: 'aptos';
-    font-size: 140%;
-    margin: 3% 0 2% 0;
+    font-size: 1.5vmax;
     z-index: 999;
+    grid-template-rows: min-content;
+    
+    div {
+        grid-column: 2;
+        height: 1em;
+
+        img {
+            display: block;
+            height: 100%;
+        }
+    }
 }
 
 #learnt_body {
+    max-width: 75%;
     font-family: 'aptos';
-    font-size: 125%;
+    font-size: 1.4vmax;
     line-height: 200%;
-    margin: 0 auto 5vh auto;
+    margin: 0 auto 5vmin auto;
+}
+
+@media only screen and (max-width: 600px) {
+    body {
+        background-image: url("../Images/gradient_phone.png");
+        border-radius: 25px;
+    }
+
+    html {
+        padding: 0;
+        border-radius: 25px;
+    }
+
+    header {
+        color: #141414;
+    }
+
+    .arrow-container {
+        transform: scale(75%);
+    }
+
+    .animoji {
+        visibility: hidden;
+    }
+
+    .pages {
+        overflow-x: scroll;
+    }
+
+    .pages::-webkit-scrollbar {
+        display: none;
+    }
+
+    .pages_slide {
+        animation: none;
+    }
+
+    #class2 {
+        display: none;
+        content-visibility: hidden;
+        visibility: hidden;
+    }
 }

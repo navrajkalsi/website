@@ -1,15 +1,15 @@
-ScrollTrigger.create({
-    animation: gsap.from("header", {
-        y: "44vh",
-        scale: 1.5,
-        yPercent: -50,
-    }),
-    scrub: true,
-    trigger: "#movies_list",
-    start: "top bottom",
-    endTrigger: "#movies_list",
-    end: "top center",
-})
+// ScrollTrigger.create({
+//     animation: gsap.from("header", {
+//         y: "44vh",
+//         scale: 1.5,
+//         yPercent: -50,
+//     }),
+//     scrub: true,
+//     trigger: "#movies_list",
+//     start: "top bottom",
+//     endTrigger: "#movies_list",
+//     end: "top center",
+// })
 
 ScrollTrigger.create({
     animation: gsap.from("#navigation", {
@@ -103,50 +103,32 @@ function displayImages5() {
     setTimeout(displayImages5, 8000);
 }
 
-// window.addEventListener("scroll", (event) => {
-//     let scroll = this.scrollY;
-//     if (scroll > 450) {
-//       document.querySelector("nav").classList.add("shadow");
-//     } else {
-//       document.querySelector("nav").classList.remove("shadow");
-//     }
-//   });
-
 //Source: https://www.shecodes.io/athena/43030-how-to-add-hover-effects-to-a-button-in-javascript#:~:text=To%20add%20hover%20effects%20to%20a%20button%20in%20JavaScript%2C%20you,or%20exits%20the%20button's%20area.&text=%2F%2F%20Get%20the%20button%20element,a%20mouseover%20event%20listener%20button.
 const button = document.querySelector('.head');
 
-// button.addEventListener('mouseover', () => {
-//   button.style.color = '#141414';
-// });
-
-// button.addEventListener('mouseout', () => {
-//   button.style.color = '';
-// });
-
-const element = document.querySelector('p')
-var rect = element.getBoundingClientRect();
-console.log(rect.top, rect.right, rect.bottom, rect.left);
-var adb = rect.top + document.documentElement.scrollTop;
+const ulEl = document.querySelector('ul')
+var ulBox = ulEl.getBoundingClientRect();
+var ulTop = ulBox.top + document.documentElement.scrollTop - window.innerHeight/1.5;
 
 const element7 = document.querySelector('.end_list')
   var rect = element7.getBoundingClientRect();
-  console.log(rect.top, rect.right, rect.bottom, rect.left);
-  var end = rect.top + document.documentElement.scrollTop - 125;
+  var end = rect.top + document.documentElement.scrollTop - window.innerHeight/5;
 
 window.addEventListener("scroll", (event) => {
     let scroll = this.scrollY;
-    if (scroll > adb && scroll < end) {
+    if (scroll > ulTop && scroll < end) {
       document.querySelector("body").classList.add("addB");
+      document.querySelector('html').style.padding = 0;
     } else {
       document.querySelector("body").classList.remove("addB");
+      document.querySelector('html').style.padding = '';
     }
   });
-
 
 const element1 = document.querySelector('#navigation')
 window.addEventListener("scroll", (event) => {
     let scroll = this.scrollY;
-    if (scroll > adb && scroll < end) {
+    if (scroll > ulTop && scroll < end) {
       element1.style.contentVisibility = 'hidden';
     } else {
       element1.style.contentVisibility = 'visible';
@@ -156,31 +138,21 @@ window.addEventListener("scroll", (event) => {
   let scroll = this.scrollY;
   if (scroll > end) {
     element1.classList.add("nav_active");
-    element1.style.background = 'black';
+    document.getElementById('navigation2').classList.add('nav2_active')
   } else {
     element1.classList.remove("nav_active");
-    element1.style.background = 'transparent';
-  }
-})
-
-const element8 = document.querySelector('header')
-window.addEventListener("scroll", (event) => {
-  let scroll = this.scrollY;
-  if (scroll > end) {
-    element8.classList.add("head_active");
-  } else {
-    element8.classList.remove("head_active")
+    document.getElementById('navigation2').classList.remove('nav2_active')
   }
 })
 
 const element2 = document.querySelector('#oppie_list')
-var rect = element2.getBoundingClientRect();
-console.log(rect.top, rect.right, rect.bottom, rect.left);
-var oppie = rect.top + document.documentElement.scrollTop;
+var oppieBox = element2.getBoundingClientRect();
+var oppieTop = oppieBox.top + document.documentElement.scrollTop;
+var oppieBottom = oppieBox.bottom + document.documentElement.scrollTop;
 
 window.addEventListener("scroll", (event) => {
     let scroll = this.scrollY;
-    if (scroll >= oppie) {
+    if (scroll >= oppieTop) {
       document.querySelector("#oppie_list").classList.add("fixed");
     } else {
       document.querySelector("#oppie_list").classList.remove("fixed");
@@ -189,7 +161,6 @@ window.addEventListener("scroll", (event) => {
 
 const element3 = document.querySelector('#dune_list')
   var rect = element3.getBoundingClientRect();
-  console.log(rect.top, rect.right, rect.bottom, rect.left);
   var dune = rect.top + document.documentElement.scrollTop;
   
   window.addEventListener("scroll", (event) => {
@@ -202,13 +173,13 @@ const element3 = document.querySelector('#dune_list')
     });
 
 const element4 = document.querySelector('#tenet_list')
-    var rect = element4.getBoundingClientRect();
-    console.log(rect.top, rect.right, rect.bottom, rect.left);
-    var tenet = rect.top + document.documentElement.scrollTop;
+    var tenetBox = element4.getBoundingClientRect();
+    var tenetTop = tenetBox.top + document.documentElement.scrollTop;
+    var tenetBottom = tenetBox.bottom + document.documentElement.scrollTop;
     
     window.addEventListener("scroll", (event) => {
         let scroll = this.scrollY;
-        if (scroll >= tenet) {
+        if (scroll >= tenetTop) {
           document.querySelector("#tenet_list").classList.add("fixed");
         } else {
           document.querySelector("#tenet_list").classList.remove("fixed");
@@ -217,7 +188,6 @@ const element4 = document.querySelector('#tenet_list')
 
 const element5 = document.querySelector('#topgun_list')
     var rect = element5.getBoundingClientRect();
-    console.log(rect.top, rect.right, rect.bottom, rect.left);
     var topgun = rect.top + document.documentElement.scrollTop;
     
     window.addEventListener("scroll", (event) => {
@@ -231,7 +201,6 @@ const element5 = document.querySelector('#topgun_list')
 
 const element6 = document.querySelector('#batman_list')
     var rect = element6.getBoundingClientRect();
-    console.log(rect.top, rect.right, rect.bottom, rect.left);
     var batman = rect.top + document.documentElement.scrollTop;
     
     window.addEventListener("scroll", (event) => {
@@ -308,3 +277,65 @@ closeButtons.forEach(button => {
     closeButton(mapped)
   })
 })
+
+document.onreadystatechange = function() {
+  if (document.readyState !== "complete") {
+    document.querySelector('body').style.visibility = 'hidden';
+    document.getElementById('loader').style.visibility = 'visible';
+    element9.style.overflowY = "hidden";
+  }
+
+  else {
+    document.querySelector('body').style.visibility = 'visible';
+    document.getElementById('loader').style.visibility = 'hidden';
+    element9.style.overflowY = "scroll";
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
+}
+
+var isSafari = navigator.vendor && navigator.vendor.indexOf('Apple') > -1 &&
+               navigator.userAgent &&
+               navigator.userAgent.indexOf('CriOS') == -1 &&
+               navigator.userAgent.indexOf('FxiOS') == -1;
+
+if (isSafari) {
+  const commentDivs = document.getElementById('movies_list').querySelectorAll('div')
+  commentDivs.forEach(comment => {
+    comment.style.opacity = 0;
+  })
+  const movieLists = document.getElementById('movies_list').querySelectorAll('li')
+  movieLists.forEach(list => {
+    list.style.animation = 'none';
+    list.style.opacity = 1;
+  })
+  var newIMG = document.createElement("img");
+  document.getElementById('oppie_list').innerHTML = "";
+  document.getElementById('oppie_list').appendChild(newIMG);
+  document.getElementById('oppie_list').querySelector('img').setAttribute('src', 'Resources/Images/Movies/oppenheimer3.jpg');
+  document.getElementById('oppie_list').querySelector('img').style.animation = 'none';
+  
+  newIMG = document.createElement("img");
+  document.getElementById('tenet_list').innerHTML = "";
+  document.getElementById('tenet_list').appendChild(newIMG);
+  document.getElementById('tenet_list').querySelector('img').setAttribute('src', 'Resources/Images/Movies/tenet1.jpg');
+  document.getElementById('tenet_list').querySelector('img').style.animation = 'none';
+  
+  newIMG = document.createElement("img");
+  document.getElementById('topgun_list').innerHTML = "";
+  document.getElementById('topgun_list').appendChild(newIMG);
+  document.getElementById('topgun_list').querySelector('img').setAttribute('src', 'Resources/Images/Movies/topgun1.jpg');
+  document.getElementById('topgun_list').querySelector('img').style.animation = 'none';
+  
+  newIMG = document.createElement("img");
+  document.getElementById('dune_list').innerHTML = "";
+  document.getElementById('dune_list').appendChild(newIMG);
+  document.getElementById('dune_list').querySelector('img').setAttribute('src', 'Resources/Images/Movies/dune1.jpg');
+  document.getElementById('dune_list').querySelector('img').style.animation = 'none';
+  
+  newIMG = document.createElement("img");
+  document.getElementById('batman_list').innerHTML = "";
+  document.getElementById('batman_list').appendChild(newIMG);
+  document.getElementById('batman_list').querySelector('img').setAttribute('src', 'Resources/Images/Movies/batman4.jpg');
+  document.getElementById('batman_list').querySelector('img').style.animation = 'none';
+}

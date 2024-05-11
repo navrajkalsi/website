@@ -1,14 +1,83 @@
 ScrollTrigger.create({
-    animation: gsap.from("header", {
-        y: "46.25vh",
-        scale: 1.5,
-        yPercent: -50,
+  animation: gsap.from("header", {
+      y: "42vh",
+      scale: 1.6,
+      yPercent: -50,
+  }),
+  scrub: true,
+  trigger: "#spacer",
+  start: "top bottom",
+  endTrigger: "#spacer",
+  end: "top center",
+})
+
+ScrollTrigger.create({
+  animation: gsap.from("a", {
+    color: "#141414",
+  }),
+  scrub: true,
+  trigger: "#spacer",
+  start: "top bottom",
+  endTrigger: "#spacer",
+  end: "top center",
+})
+
+function desktop() {
+ScrollTrigger.create({
+  animation: gsap.from("#navigation", {
+      backgroundColor: "transparent",
+      height: '8vmax',
+      top: 'auto',
+      left: 'auto',
+      width: '98.5vw',
+  }),
+  scrub: true,
+  trigger: "#spacer",
+  start: "top bottom",
+  endTrigger: "#spacer",
+  end: "top center",
+})
+}
+
+function mobile() {
+ScrollTrigger.create({
+  animation: gsap.from("#navigation", {
+      backgroundColor: "transparent",
+      height: '8vmax',
+  }),
+  scrub: true,
+  trigger: "#spacer",
+  start: "top bottom",
+  endTrigger: "#spacer",
+  end: "top center",
+})
+
+  ScrollTrigger.create({
+    animation: gsap.from("#navigation", {
+      paddingTop: '1vh',
     }),
     scrub: true,
-    trigger: "#spotify",
+    trigger: "#spacer",
     start: "top bottom",
-    endTrigger: "#spotify",
+    endTrigger: "#spacer",
     end: "top center",
+  })
+}
+
+if(window.innerWidth <= 600) {
+  mobile()
+}
+else {
+  desktop()
+}
+
+window.addEventListener("resize", (event) => {
+  if(window.innerWidth <= 600) {
+    mobile()
+  }
+  else {
+    desktop()
+  }
 })
 
 // Source: https://www.youtube.com/watch?v=MBaw_6cPmAw
@@ -51,4 +120,30 @@ function closeButton(learnt) {
   learnt.classList.remove('active')
   overlay.classList.remove('active')
   element9.style.overflowY = 'scroll'
+}
+
+
+// var Sbox = document.querySelector('p').getBoundingClientRect()
+// var topS = Sbox.top
+
+// console.log(topS/2 + (0.014*window.innerHeight))
+
+// window.addEventListener('scroll', () => {
+//     console.log(this.scrollY)
+// })
+
+document.onreadystatechange = function() {
+  if (document.readyState !== "complete") {
+    document.querySelector('body').style.visibility = 'hidden';
+    document.getElementById('loader').style.visibility = 'visible';
+    element9.style.overflowY = "hidden";
+  }
+
+  else {
+    document.querySelector('body').style.visibility = 'visible';
+    document.getElementById('loader').style.visibility = 'hidden';
+    element9.style.overflowY = "scroll";
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
 }

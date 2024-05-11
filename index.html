@@ -1,72 +1,115 @@
 <!DOCTYPE html>
 <html lang="en" class="noBar">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#000000">
     <title>Navraj Kalsi's Website</title>
     <link rel="stylesheet" href="Resources/Styles/main.css" type="text/css">
     <link rel="stylesheet" href="Resources/Styles/fonts.css" type="text/css">
     <link rel="shortcut icon" href="Resources/Icons/animoji.ico" type="image/x-icon">
 </head>
+
+<div id="loader" fetchpriority="veryhigh"><img src="/Resources/Images/loader.gif" fetchpriority="veryhigh"></div>
+
 <body>
-    <header>
-        <span class="head"></span>
-    </header>
+    <div id="first">
+        <header>
+            <span class="head"></span>
+        </header>
+    
+        <p class="opening">
+            Hello <strong>stranger</strong> or <strong>known</strong>,<br>
+            Welcome to my very first and very own website.
+        </p>
+    
+        <p class="scroll-down">Scroll down</p>
+    
+        <p class="arrow-container">
+            <span class="arrow"></span>
+        </p>
+    </div>
 
-    <p class="opening">
-        Hello <strong>stranger</strong> or <strong>known</strong>,<br>
-        Welcome to my very first and very own website.
-    </p>
+    <section>
+        <h2 class="about_h">About this site:</h2>
 
-    <p class="scroll-down">Scroll down</p>
-        
-    <p class="arrow-container">
-        <span class="arrow"></span>
-    </p>
+        <div class="animoji"><img src="Resources/Icons/IMG_3597.png" alt="my animoji" title="My Animoji :)"></div>
 
-    <section >
-    <h2 class="about_h">About this site:</h2>
+        <p class="about_p">This website is solely built by me.<br>Their is no particular reason behind it, I just wanted
+            to try something new :)<br><br>Since their is nothing in particular to talk about I will give some history
+            about myself and talk about my interests.<br>Buckle Up!</p>
+    </section>
 
-    <div class="animoji"><img src="Resources/Icons/IMG_3597.png" alt="my animoji" title="My Animoji :)"></div>
-
-    <p class="about_p">This website is solely built by me.<br>Their is no particular reason behind it, I just wanted to try something new :)<br><br>Since their is nothing in particular to talk about I will give some history about myself and talk about my interests.<br>Buckle Up!</p>
-    </section>    
-
-    <h2 class="about_h">Where you can go from here(nothing much actually &#128578;):</h2>
+    <h2 class="about_h" style="color: #141414;">Where you can go from here(nothing much actually &#128578;):</h2>
 
     <div class="pages">
         <div class="pages_slide">
-            <div class="card"><a href="about.html"><img src="Resources/Icons/animoji.jpg" alt="my animoji" class="card_image"><div class="title">About Me<br>&#10084;</div></a></div>
-            <div class="card"><a href="movies.html"><img src="Resources/Images/movies.png" class="card_image" alt="movies collage"><div class="title">My Favourite<br>Movies</div></a></div>
-            <div class="card"><a href="series.html"><img src="Resources/Images/series.png" alt="tv shows collage" class="card_image"><div class="title">My Favourtie<br>TV Shows</div></a></div>
-            <div class="card"><a href="music.html"><img src="Resources/Images/music.jpg" alt="music" class="card_image"><div class="title">My Music<br>Library</div></a></div>
+            <div class="card"><a href="about.php"><img src="Resources/Icons/animoji.jpg" alt="my animoji"
+                        class="card_image">
+                    <div class="title">About Me<br>&#10084;</div>
+                </a></div>
+            <div class="card"><a href="movies.html"><img src="Resources/Images/movies.png" class="card_image"
+                        alt="movies collage">
+                    <div class="title">My Favourite<br>Movies</div>
+                </a></div>
+            <div class="card"><a href="series.html"><img src="Resources/Images/series.png" alt="tv shows collage"
+                        class="card_image">
+                    <div class="title">My Favourite<br>TV Shows</div>
+                </a></div>
+            <div class="card"><a href="music.html"><img src="Resources/Images/music.jpg" alt="music" class="card_image">
+                    <div class="title">My Music<br>Library</div>
+                </a></div>
         </div>
-        <div class="pages_slide">
-            <div class="card"><a href="about.html"><img src="Resources/Icons/animoji.jpg" alt="my animoji" class="card_image"><div class="title">About Me<br>&#10084;</div></a></div>
-            <div class="card"><a href="movies.html"><img src="Resources/Images/movies.png" class="card_image" alt="movies collage"><div class="title">My Favourite<br>Movies</div></a></div>
-            <div class="card"><a href="series.html"><img src="Resources/Images/series.png" alt="tv shows collage" class="card_image"><div class="title">My Favourtie<br>TV Shows</div></a></div>
-            <div class="card"><a href="music.html"><img src="Resources/Images/music.jpg" alt="music" class="card_image"><div class="title">My Music<br>Library</div></a></div>
+        <div class="pages_slide" id="class2">
+            <div class="card"><a href="about.php"><img src="Resources/Icons/animoji.jpg" alt="my animoji"
+                        class="card_image">
+                    <div class="title">About Me<br>&#10084;</div>
+                </a></div>
+            <div class="card"><a href="movies.html"><img src="Resources/Images/movies.png" class="card_image"
+                        alt="movies collage">
+                    <div class="title">My Favourite<br>Movies</div>
+                </a></div>
+            <div class="card"><a href="series.html"><img src="Resources/Images/series.png" alt="tv shows collage"
+                        class="card_image">
+                    <div class="title">My Favourit
+                        e<br>TV Shows</div>
+                </a></div>
+            <div class="card"><a href="music.html"><img src="Resources/Images/music.jpg" alt="music" class="card_image">
+                    <div class="title">My Music<br>Library</div>
+                </a></div>
         </div>
     </div>
 
     <button data-learnt-target="#learnt" id="learning" type="button">What I learned while building this page.&nbsp;
-        <div style="display: inline-block;"><img style="height: 4vh;" src="Resources/Icons/menu_1.png" alt=""></div></button>
-    
-        <div id="learnt">
-            <div id="learnt_header">
-                <div id="learnt_title">What I learned.</div>
-                <button data-close-button id="learnt_close" type="button">&times;</button>
-            </div>
-            <div id="learnt_body">The first page I ever made and published online.<br>Learned a lot of little things while building this.<br>I didn't know anything about CSS animations, learned a lot about those.<br>This page includes many animations that I made myself after experimenting with differnt things.<br>All of the stuff that I added was just to experiment with new things in the code.<br>Hope you like those.<br><br>Thanks for visiting.</div>
-        </div>
-        <div id="overlay"></div>
+        <div><img src="Resources/Icons/menu_1.png" alt=""></div>
+    </button>
 
-    <nav>My Socials:<ul>
-        <li><a href="https://twitter.com/navrajkalsi" target="_blank"><img src="Resources/Icons/twitter.png" alt="twitter/x logo"></a></li>
-        <li><a href="https://reddit.com/u/NavrajKalsi" target="_blank"><img src="Resources/Icons/reddit.png" alt="reddit logo"></a></li>
-        <li><a href="https://linkedin.com/in/navrajsinghkalsi" target="_blank"><img src="Resources/Icons/linkedin.png" alt="linkedin logo"></a></li>
-        <li><a href="https://github.com/navrajkalsi" target="_blank"><img src="Resources/Icons/github.png" alt="gihub logo"></a></li>
-    </ul></nav>
+    <div id="learnt">
+        <div id="learnt_header">
+            <div id="learnt_title">What I learned.</div>
+            <button data-close-button id="learnt_close" type="button">&times;</button>
+        </div>
+        <div id="learnt_body">The first page I ever made and published online.<br>Learned a lot of little things while
+            building this.<br>I didn't know anything about CSS animations, learned a lot about those.<br>This page
+            includes many animations that I made myself after experimenting with differnt things.<br>All of the stuff
+            that I added was just to experiment with new things in the code.<br>Hope you like those.<br><br>Thanks for
+            visiting.</div>
+    </div>
+    <div id="overlay"></div>
+
+    <nav>My Socials:
+        <ul>
+            <li><a href="https://twitter.com/navrajkalsi" target="_blank"><img src="Resources/Icons/twitter.png"
+                        alt="twitter/x logo"></a></li>
+            <li><a href="https://reddit.com/u/NavrajKalsi" target="_blank"><img src="Resources/Icons/reddit.png"
+                        alt="reddit logo"></a></li>
+            <li><a href="https://linkedin.com/in/navrajsinghkalsi" target="_blank"><img
+                        src="Resources/Icons/linkedin.png" alt="linkedin logo"></a></li>
+            <li><a href="https://github.com/navrajkalsi" target="_blank"><img src="Resources/Icons/github.png"
+                        alt="gihub logo"></a></li>
+        </ul>
+    </nav>
 
     <footer>
         Copyright&copy; 2024 Navraj Singh Kalsi
@@ -75,4 +118,5 @@
     <script src="Resources/Scripts/script.js"></script>
 
 </body>
+
 </html>

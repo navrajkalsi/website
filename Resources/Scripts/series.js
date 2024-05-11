@@ -1,15 +1,15 @@
-ScrollTrigger.create({
-    animation: gsap.from("header", {
-        y: "44vh",
-        scale: 1.5,
-        yPercent: -50,
-    }),
-    scrub: true,
-    trigger: "#series_list",
-    start: "top bottom",
-    endTrigger: "#series_list",
-    end: "top center",
-})
+// ScrollTrigger.create({
+//     animation: gsap.from("header", {
+//         y: "44vh",
+//         scale: 1.5,
+//         yPercent: -50,
+//     }),
+//     scrub: true,
+//     trigger: "#series_list",
+//     start: "top bottom",
+//     endTrigger: "#series_list",
+//     end: "top center",
+// })
 
 let index1 = 0;
 displayImages1();
@@ -94,22 +94,22 @@ function displayImages5() {
 //Source: https://www.shecodes.io/athena/43030-how-to-add-hover-effects-to-a-button-in-javascript#:~:text=To%20add%20hover%20effects%20to%20a%20button%20in%20JavaScript%2C%20you,or%20exits%20the%20button's%20area.&text=%2F%2F%20Get%20the%20button%20element,a%20mouseover%20event%20listener%20button.
 const button = document.querySelector('.head');
 
-const element = document.querySelector('p')
-var rect = element.getBoundingClientRect();
-console.log(rect.top, rect.right, rect.bottom, rect.left);
-var adb = rect.top + document.documentElement.scrollTop;
+const ulEl = document.querySelector('ul')
+var ulBox = ulEl.getBoundingClientRect();
+var ulTop = ulBox.top + document.documentElement.scrollTop - window.innerHeight/1.5;
 
 const element7 = document.querySelector('.end_list')
   var rect = element7.getBoundingClientRect();
-  console.log(rect.top, rect.right, rect.bottom, rect.left);
-  var end = rect.top + document.documentElement.scrollTop - 125;
+  var end = rect.top + document.documentElement.scrollTop - window.innerHeight/5;
 
 window.addEventListener("scroll", (event) => {
     let scroll = this.scrollY;
-    if (scroll > adb && scroll < end) {
+    if (scroll > ulTop && scroll < end) {
       document.querySelector("body").classList.add("addB");
+      document.querySelector('html').style.padding = 0;
     } else {
       document.querySelector("body").classList.remove("addB");
+      document.querySelector('html').style.padding = '';
     }
   });
 
@@ -117,7 +117,7 @@ window.addEventListener("scroll", (event) => {
 const element1 = document.querySelector('#navigation')
 window.addEventListener("scroll", (event) => {
     let scroll = this.scrollY;
-    if (scroll > adb && scroll < end) {
+    if (scroll > ulTop && scroll < end) {
       element1.style.contentVisibility = 'hidden';
     } else {
       element1.style.contentVisibility = 'visible';
@@ -127,31 +127,20 @@ window.addEventListener("scroll", (event) => {
   let scroll = this.scrollY;
   if (scroll > end) {
     element1.classList.add("nav_active");
-    element1.style.background = 'black';
+    document.getElementById('navigation2').classList.add('nav2_active')
   } else {
     element1.classList.remove("nav_active");
-    element1.style.background = 'transparent';
-  }
-})
-
-const element8 = document.querySelector('header')
-window.addEventListener("scroll", (event) => {
-  let scroll = this.scrollY;
-  if (scroll > end) {
-    element8.classList.add("head_active");
-  } else {
-    element8.classList.remove("head_active")
+    document.getElementById('navigation2').classList.remove('nav2_active')
   }
 })
 
 const element2 = document.querySelector('#breakingbad_list')
 var rect = element2.getBoundingClientRect();
-console.log(rect.top, rect.right, rect.bottom, rect.left);
 var breakingbad = rect.top + document.documentElement.scrollTop;
 
 window.addEventListener("scroll", (event) => {
     let scroll = this.scrollY;
-    if (scroll > breakingbad) {
+    if (scroll >= breakingbad) {
       document.querySelector("#breakingbad_list").classList.add("fixed");
     } else {
       document.querySelector("#breakingbad_list").classList.remove("fixed");
@@ -160,12 +149,11 @@ window.addEventListener("scroll", (event) => {
 
 const element3 = document.querySelector('#succession_list')
   var rect = element3.getBoundingClientRect();
-  console.log(rect.top, rect.right, rect.bottom, rect.left);
   var succession = rect.top + document.documentElement.scrollTop;
   
   window.addEventListener("scroll", (event) => {
       let scroll = this.scrollY;
-      if (scroll > succession) {
+      if (scroll >= succession) {
         document.querySelector("#succession_list").classList.add("fixed");
       } else {
         document.querySelector("#succession_list").classList.remove("fixed");
@@ -174,12 +162,11 @@ const element3 = document.querySelector('#succession_list')
 
 const element4 = document.querySelector('#dark_list')
     var rect = element4.getBoundingClientRect();
-    console.log(rect.top, rect.right, rect.bottom, rect.left);
     var dark = rect.top + document.documentElement.scrollTop;
     
     window.addEventListener("scroll", (event) => {
         let scroll = this.scrollY;
-        if (scroll > dark) {
+        if (scroll >= dark) {
           document.querySelector("#dark_list").classList.add("fixed");
         } else {
           document.querySelector("#dark_list").classList.remove("fixed");
@@ -188,12 +175,11 @@ const element4 = document.querySelector('#dark_list')
 
 const element5 = document.querySelector('#ted_list')
     var rect = element5.getBoundingClientRect();
-    console.log(rect.top, rect.right, rect.bottom, rect.left);
     var ted = rect.top + document.documentElement.scrollTop;
     
     window.addEventListener("scroll", (event) => {
         let scroll = this.scrollY;
-        if (scroll > ted) {
+        if (scroll >= ted) {
           document.querySelector("#ted_list").classList.add("fixed");
         } else {
           document.querySelector("#ted_list").classList.remove("fixed");
@@ -202,12 +188,11 @@ const element5 = document.querySelector('#ted_list')
 
 const element6 = document.querySelector('#black_list')
     var rect = element6.getBoundingClientRect();
-    console.log(rect.top, rect.right, rect.bottom, rect.left);
     var black = rect.top + document.documentElement.scrollTop;
     
     window.addEventListener("scroll", (event) => {
         let scroll = this.scrollY;
-        if (scroll > black) {
+        if (scroll >= black) {
           document.querySelector("#black_list").classList.add("fixed");
         } else {
           document.querySelector("#black_list").classList.remove("fixed");
@@ -254,4 +239,66 @@ function closeButton(learnt) {
   learnt.classList.remove('active')
   overlay.classList.remove('active')
   element9.style.overflowY = 'scroll'
+}
+
+document.onreadystatechange = function() {
+  if (document.readyState !== "complete") {
+    document.querySelector('body').style.visibility = 'hidden';
+    document.getElementById('loader').style.visibility = 'visible';
+    element9.style.overflowY = "hidden";
+  }
+
+  else {
+    document.querySelector('body').style.visibility = 'visible';
+    document.getElementById('loader').style.visibility = 'hidden';
+    element9.style.overflowY = "scroll";
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
+}
+
+var isSafari = navigator.vendor && navigator.vendor.indexOf('Apple') > -1 &&
+               navigator.userAgent &&
+               navigator.userAgent.indexOf('CriOS') == -1 &&
+               navigator.userAgent.indexOf('FxiOS') == -1;
+
+if (isSafari) {
+  const commentDivs = document.getElementById('series_list').querySelectorAll('div')
+  commentDivs.forEach(comment => {
+    comment.style.visibility = 'hidden';
+  })
+  const movieLists = document.getElementById('series_list').querySelectorAll('li')
+  movieLists.forEach(list => {
+    list.style.animation = 'none';
+    list.style.opacity = 1;
+  })
+  var newIMG = document.createElement("img");
+  document.getElementById('breakingbad_list').innerHTML = "";
+  document.getElementById('breakingbad_list').appendChild(newIMG);
+  document.getElementById('breakingbad_list').querySelector('img').setAttribute('src', 'Resources/Images/Series/breakingbad3.jpg');
+  document.getElementById('breakingbad_list').querySelector('img').style.animation = 'none';
+  
+  newIMG = document.createElement("img");
+  document.getElementById('dark_list').innerHTML = "";
+  document.getElementById('dark_list').appendChild(newIMG);
+  document.getElementById('dark_list').querySelector('img').setAttribute('src', 'Resources/Images/Series/dark3.jpg');
+  document.getElementById('dark_list').querySelector('img').style.animation = 'none';
+  
+  newIMG = document.createElement("img");
+  document.getElementById('ted_list').innerHTML = "";
+  document.getElementById('ted_list').appendChild(newIMG);
+  document.getElementById('ted_list').querySelector('img').setAttribute('src', 'Resources/Images/Series/ted3.jpg');
+  document.getElementById('ted_list').querySelector('img').style.animation = 'none';
+  
+  newIMG = document.createElement("img");
+  document.getElementById('black_list').innerHTML = "";
+  document.getElementById('black_list').appendChild(newIMG);
+  document.getElementById('black_list').querySelector('img').setAttribute('src', 'Resources/Images/Series/blackmirror2.jpg');
+  document.getElementById('black_list').querySelector('img').style.animation = 'none';
+  
+  newIMG = document.createElement("img");
+  document.getElementById('succession_list').innerHTML = "";
+  document.getElementById('succession_list').appendChild(newIMG);
+  document.getElementById('succession_list').querySelector('img').setAttribute('src', 'Resources/Images/Series/succession1.jpg');
+  document.getElementById('succession_list').querySelector('img').style.animation = 'none';
 }
