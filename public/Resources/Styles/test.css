@@ -1,0 +1,459 @@
+* {
+    user-select: none;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    cursor: none !important;
+    scrollbar-width: none;
+}
+
+html::-webkit-scrollbar {
+    display: none;
+}
+
+body {
+    color: white;
+    background-color: #141414;
+}
+
+/* HIDING */
+@keyframes hide {
+    0% {
+        opacity: 1;
+    }
+
+    99% {
+        visibility: visible;
+    }
+
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+.hide {
+    animation: hide 1s forwards;
+}
+
+/* LOADER */
+#loader {
+    background-color: #141414;
+    z-index: 1000;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    span {
+        visibility: inherit;
+        color: #191919;
+        font-family: 'Roboto Italic';
+        font-weight: 900;
+        font-size: 30rem;
+        animation: loading 3s ease-in-out infinite;
+    }
+}
+
+@keyframes loading {
+    0% {
+        text-shadow: 0 0 0;
+        scale: 105%;
+    }
+
+    5% {
+        text-shadow: 0 0 0;
+        scale: 105%;
+    }
+
+    50% {
+        text-shadow: 0 0 10px #000;
+        scale: 1;
+    }
+
+    95% {
+        text-shadow: 0 0 0;
+        scale: 105%;
+    }
+
+    100% {
+        text-shadow: 0 0 0;
+        scale: 105%;
+    }
+}
+
+@font-face {
+    font-family: 'Anton';
+    src: url('/Resources/Fonts/Anton.ttf');
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('/Resources/Fonts/Roboto.tff');
+}
+
+@font-face {
+    font-family: 'Roboto Italic';
+    src: url('/Resources/Fonts/RobotoItalic.ttf');
+}
+
+@font-face {
+    font-family: 'Outfit';
+    src: url('/Resources/Fonts/Outfit.ttf');
+}
+
+@font-face {
+    /* Source: https://www.lewismcguffie.com/Tusker-Grotesk-Typeface */
+    font-family: 'Tusker Grotesk SB 3600';
+    src: url('/Resources/Fonts/TuskerGrotesk-3600Semibold.ttf');
+}
+
+/* WALLPAPER */
+#wallpaper,
+.wallpapers {
+    filter: brightness(25%);
+    z-index: 0;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: opacity 1s ease;
+
+
+    img {
+        width: 100%;
+        height: 100%;
+    }
+
+    video {
+        object-fit: cover;
+    }
+}
+
+.wallpapers {
+    filter: brightness(60%) !important;
+    z-index: 1 !important;
+}
+
+.hideCursor {
+    transition: scale 0.4s ease-in-out !important;
+}
+
+.hideCursor:hover {
+    scale: 105%;
+}
+
+/* CURSOR */
+#circularCursor {
+    transition: scale ease 0.05s;
+    transition: opacity ease 0.1s;
+    background: transparent;
+    border: 5px solid rgba(255, 255, 255, 0.95);
+    filter: drop-shadow(0 0 15px #141414);
+    box-shadow: 0 0 8px #808080 inset;
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    position: absolute;
+    z-index: 1000;
+    left: var(--x);
+    top: var(--y);
+}
+
+header {
+    /* height: var(--navWidth); */
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+
+    h1 {
+        font-family: 'Outfit';
+        letter-spacing: 1px;
+        margin: 110vh auto 100vh auto;
+        text-align: center;
+        font-size: 250%;
+        color: #fff;
+        padding: 0 10%;
+        z-index: 3;
+    }
+}
+
+#opening {
+    height: 100vh;
+    display: flex;
+    overflow: hidden;
+    align-items: center;
+    color: rgba(200, 200, 200, 0.1);
+    position: fixed;
+    top: 0;
+    white-space: nowrap;
+    z-index: 2;
+    transition: all ease 0.1s;
+
+    span {
+        font-weight: 500;
+        /* font-family: "Roboto", sans-serif; */
+        font-family: 'Anton';
+        font-size: 50rem;
+    }
+}
+
+#about {
+    grid-template-rows: 1fr 3fr;
+    height: 100vh;
+    padding: 5%;
+    z-index: 3;
+    position: relative;
+    display: grid;
+    overflow: hidden;
+
+    span {
+        grid-column: 1;
+        grid-row: 1;
+        font-family: 'Anton';
+        width: fit-content;
+        color: #eee;
+        opacity: 1;
+        font-size: 10rem;
+    }
+
+    div {
+        grid-column: 1;
+        line-height: 175%;
+        color: #eee;
+        font-family: 'Outfit';
+        font-size: 1.75rem;
+    }
+
+    #animoji {
+        filter: drop-shadow(15px 15px 5px #000);
+        background-image: url('/Resources/Icons/animoji.png');
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        width: 25vmax;
+        height: 100%;
+        grid-row: 1/3;
+        grid-column: 2;
+        line-height: normal;
+        font: normal;
+    }
+}
+
+#pages {
+    position: relative;
+    overflow: hidden;
+    z-index: 3;
+
+    ul {
+        position: relative;
+        height: 100vh;
+        width: fit-content;
+        display: flex;
+        flex-direction: row;
+
+        li {
+            width: 75vw;
+            height: 25%;
+            list-style-type: none;
+            display: flex;
+            justify-content: center;
+
+            >div {
+                font-family: 'Anton';
+                text-wrap: nowrap;
+                font-size: 4rem;
+                text-align: center;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: fit-content;
+                height: 100%;
+
+                a {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    text-decoration: none;
+                    color: inherit;
+                    width: fit-content;
+                    height: 100%;
+                    cursor: none;
+
+                    img {
+                        object-fit: cover;
+                        height: 20%;
+                        margin-left: 2%;
+                    }
+                }
+
+                img {
+                    object-fit: cover;
+                    height: 20%;
+                    margin-left: 2%;
+                }
+
+            }
+        }
+    }
+}
+
+.fix {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+}
+
+#learning {
+    position: relative;
+    font-size: 1.8rem;
+    margin: 100vh 0 10vmax 50vw;
+    transform: translateX(-50%);
+    text-align: center;
+    width: fit-content;
+    z-index: 3;
+
+    u {
+        display: block;
+        position: relative;
+        text-wrap: nowrap;
+        font-family: 'Outfit';
+        color: #fff;
+        font-weight: bold;
+        line-height: 200%;
+    }
+}
+
+#overlay {
+    z-index: 4;
+    visibility: hidden;
+    position: fixed;
+    min-height: 100vh;
+    min-width: 100vw;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+#learningDialog {
+    z-index: 5;
+    visibility: hidden;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    top: 50vh;
+    left: 50vw;
+    transform: translate(-50%, -50%);
+    transition: margin-top 0.5s ease;
+    margin-top: 100vh;
+    min-width: 75vw;
+    min-height: 75vh;
+    background-color: #000;
+    border-radius: 25px;
+
+    >span {
+        font-family: 'Tusker Grotesk SB 3600';
+        padding: 4% 4% 0 4%;
+        font-size: 5rem;
+        width: 100%;
+        display: grid;
+        flex-direction: row;
+        max-width: 100%;
+        text-wrap: nowrap;
+        max-width: 100%;
+        width: 100%;
+
+        span {
+            font-family: inherit;
+            font-size: inherit;
+            grid-column: 1;
+        }
+
+        button {
+            background-color: transparent;
+            color: #fff;
+            outline: none;
+            border: none;
+            cursor: none !important;
+            font-size: inherit;
+            font-family: inherit;
+            font-weight: 1000;
+            width: fit-content;
+            grid-column: 2;
+            justify-self: right;
+        }
+    }
+
+    div {
+        text-align: center;
+        font-size: 1.3rem;
+        font-family: 'Outfit';
+        padding: 5% 10%;
+        line-height: 150%;
+    }
+}
+
+nav {
+    color: #fff;
+    width: 100vw;
+    position: relative;
+    text-align: center;
+    font-family: 'Outfit';
+    font-weight: bolder;
+    font-size: 2rem;
+    z-index: 3;
+
+    ul {
+        display: flex;
+        justify-content: space-around;
+        padding: 3% 0;
+
+        li {
+            list-style-type: none;
+
+            a {
+                cursor: none !important;
+                display: block;
+                height: fit-content;
+                width: 100%;
+
+                img {
+                    filter: invert(1);
+                }
+            }
+        }
+    }
+}
+
+footer {
+    text-align: center;
+    padding: 2%;
+    color: #fff;
+    font-family: 'Anton';
+    font-size: 1.5rem;
+
+    a {
+        padding: 0 1%;
+        text-decoration: none;
+        color: inherit;
+        position: relative;
+        z-index: 3 !important;
+        display: inline-block;
+        cursor: none !important;
+        font-family: inherit;
+    }
+}
