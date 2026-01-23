@@ -1,10 +1,11 @@
 const user_url = "https://api.github.com/users/navrajkalsi",
   repos_url = `${user_url}/repos`,
-  repo_order = [ // only change this to order the repos
+  repo_order = [
+    // only change this to order the repos
     "proxy-c",
     "server-c",
     "forexpy",
-    // ".dotfiles"
+    // ".dotfiles",
   ],
   repo_url_prefix = "https://api.github.com/repos/navrajkalsi",
   content_url_prefix = "https://raw.githubusercontent.com/navrajkalsi";
@@ -15,13 +16,13 @@ let github_repos, // will contain the repos from github in JSON
 async function fetch_json(url) {
   const response = await fetch(url);
   return response.json();
-};
+}
 
 // readme markdowns to html
 function mark_to_html(markdown) {
   let parsed = marked.parse(markdown);
   return DOMPurify.sanitize(parsed);
-};
+}
 
 // removes elements from mark_elm that do not look good for the website
 // and returns the new sanitized elm
@@ -36,10 +37,8 @@ function sanitize_mark_elm(mark_elm) {
 
     if (to_remove_elms)
       // removing individual element
-      for (const to_remove_elm of to_remove_elms)
-        to_remove_elm.remove();
-    else
-      continue;
+      for (const to_remove_elm of to_remove_elms) to_remove_elm.remove();
+    else continue;
   }
 
   return mark_elm;
@@ -60,10 +59,8 @@ async function fill_repos() {
 // returns the default branch name of a repo, given the id from repos json
 function get_default_branch(id) {
   for (repo of github_repos)
-    if (repo.id === id)
-      return repo.default_branch;
-    else
-      continue;
+    if (repo.id === id) return repo.default_branch;
+    else continue;
 }
 
 // creates github_repos.length copies of sample section, including the said section
@@ -76,7 +73,9 @@ function create_sections() {
     const new_section = sample_section.cloneNode(true),
       hr = document.createElement("hr");
     // inserting before the about section and a hr
-    document.getElementById("scroll-content").insertBefore(new_section, about_section);
+    document
+      .getElementById("scroll-content")
+      .insertBefore(new_section, about_section);
     document.getElementById("scroll-content").insertBefore(hr, about_section);
   }
 }
@@ -121,14 +120,15 @@ async function fill_sections() {
 
     // checking request status, if starts with 4xx or 5xx then deleting demo div
     {
-      const gif_response = await fetch(`${content_url_prefix}/${repo}/${branch}/media/demo.gif`);
+      const gif_response = await fetch(
+        `${content_url_prefix}/${repo}/${branch}/media/demo.gif`,
+      );
 
       // error
       if (gif_response.status >= 400) {
         console.clear();
         section.removeChild(demo_div);
-      }
-      else
+      } else
         demo_div.firstElementChild.src = `${content_url_prefix}/${repo}/${branch}/media/demo.gif`;
     }
   }
@@ -141,8 +141,10 @@ function setup_repo_listeners() {
     const section = sections[i],
       github_url = github_repos[i].html_url;
 
-    section.querySelector("div.title").firstElementChild.onclick = () => visit_url(github_url);
-    section.querySelector("button.github").onclick = () => visit_url(github_url);
+    section.querySelector("div.title").firstElementChild.onclick = () =>
+      visit_url(github_url);
+    section.querySelector("button.github").onclick = () =>
+      visit_url(github_url);
   }
 }
 
@@ -150,8 +152,9 @@ function setup_repo_listeners() {
 async function handle_sections() {
   // orders and removes repos not in repo_order
   github_repos = repo_order
-    .map(repo => github_repos
-      .find(github_repo => github_repo.name === repo))
+    .map((repo) =>
+      github_repos.find((github_repo) => github_repo.name === repo),
+    )
     .filter(Boolean);
 
   // creating required number of sections & filling them
@@ -165,4 +168,4 @@ async function handle_github() {
 
   await fill_repos();
   await handle_sections();
-};
+}

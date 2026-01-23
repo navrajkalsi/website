@@ -32,7 +32,12 @@ class Particle {
     this.y += this.speedY;
 
     // preventing overflow
-    if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) {
+    if (
+      this.x < 0 ||
+      this.x > canvas.width ||
+      this.y < 0 ||
+      this.y > canvas.height
+    ) {
       this.reset();
       this.x = Math.random() * canvas.width;
       this.y = Math.random() * canvas.height;
@@ -54,7 +59,7 @@ function animate_background() {
   ctx.fillStyle = "#141414";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-  particles.forEach(p => {
+  particles.forEach((p) => {
     p.update();
     p.draw();
   });

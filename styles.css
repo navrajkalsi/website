@@ -106,7 +106,9 @@ section.project {
 
       span {
         text-wrap: nowrap;
-        font: normal 600 clamp(0.9rem, 1.25vw, 2rem) "Oswald", sans-serif;
+        font:
+          normal 600 clamp(0.9rem, 1.25vw, 2rem) "Oswald",
+          sans-serif;
       }
 
       svg {
@@ -201,7 +203,9 @@ section.hero {
   }
 
   .server-text {
-    font: normal 300 clamp(0.8rem, 1.1vw, 1.5rem) "Outfit", sans-serif;
+    font:
+      normal 300 clamp(0.8rem, 1.1vw, 1.5rem) "Outfit",
+      sans-serif;
     color: #696969;
     margin: 0 5% 2% 5%;
     opacity: 0;
@@ -258,7 +262,6 @@ section.about {
   }
 }
 
-
 .highlight-text {
   text-wrap: nowrap;
   position: relative;
@@ -288,7 +291,6 @@ section.about {
 }
 
 @media (max-width: 576px) {
-
   .highlight-text:after {
     height: 6px !important;
   }

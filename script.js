@@ -1,9 +1,9 @@
 const socials = {
-  "github": "https://www.github.com/navrajkalsi",
-  "linkedin": "https://linkedin.com/in/navrajkalsi",
-  "reddit": "https://reddit.com/u/navrajkalsi",
-  "twitter": "https://twitter.com/navrajkalsi",
-  "email": "mailto:navrajkalsi.com"
+  github: "https://www.github.com/navrajkalsi",
+  linkedin: "https://linkedin.com/in/navrajkalsi",
+  reddit: "https://reddit.com/u/navrajkalsi",
+  twitter: "https://twitter.com/navrajkalsi",
+  email: "mailto:navrajkalsi.com",
 };
 
 function visit_url(url) {
@@ -20,4 +20,4 @@ document.addEventListener("DOMContentLoaded", async () => {
 window.onload = async () => {
   document.getElementById("loader").classList.add("hidden");
   document.getElementById("scroll-content").classList.remove("hidden");
-}
+};
