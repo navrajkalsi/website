@@ -1,8 +1,8 @@
-# Portfolio Website
+# Website
 
 [![Website Demo](./demo.png)](https://navrajkalsi.com)
 
-Personal portfolio website.
+Personal website.
 
 Served by [Server-C](https://github.com/navrajkalsi/server-c).
 Proxied by [Proxy-C](https://github.com/navrajkalsi/proxy-c).
