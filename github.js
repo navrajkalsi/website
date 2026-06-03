@@ -129,8 +129,16 @@ async function fill_sections() {
       if (gif_response.status >= 400) {
         console.clear();
         section.removeChild(demo_div);
-      } else
-        demo_div.firstElementChild.src = `${content_url_prefix}/${repo}/${branch}/media/demo.gif`;
+      } else {
+        const loading_span = demo_div.firstElementChild;
+        const img = demo_div.lastElementChild;
+
+        img.src = `${content_url_prefix}/${repo}/${branch}/media/demo.gif`;
+        img.onload = () => {
+          loading_span.classList.add("hidden");
+          img.classList.remove("hidden");
+        }
+      }
     }
   }
 }
