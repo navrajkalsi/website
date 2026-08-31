@@ -3,7 +3,7 @@
   --background: #141414;
   --accent: #fa1919;
   --font: normal 350 clamp(1.25rem, 1.0vw, 2rem) "Outfit", sans-serif;
-  --h1: normal 600 clamp(1.25rem, 4vw, 3rem) "Oswald", sans-serif;
+  --h1: normal 700 clamp(1.25rem, 4vw, 3rem) "Oswald", sans-serif;
   --h2: normal 600 clamp(1.25rem, 3vw, 3rem) "Oswald", sans-serif;
   --h3: normal 600 clamp(1.25rem, 2vw, 3rem) "Oswald", sans-serif;
   --code: normal 300 clamp(1.25rem, 1.0vw, 2rem) "Cascadia Mono", sans-serif;
@@ -23,26 +23,58 @@ body {
   line-height: 1.5;
 }
 
+nav {
+  padding: 1%;
+  height: 8vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  h1 {
+    font: var(--h1);
+    margin: auto;
+    text-align: center;
+  }
+
+  h1:hover {
+    cursor: none;
+  }
+
+  a,
+  div {
+    height: 3vw;
+    margin: auto 1%;
+  }
+
+  a:hover {
+    cursor: pointer;
+    scale: 110%;
+  }
+
+  a {
+    transition: all 0.5s ease;
+
+    svg {
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  div {
+    visibility: hidden;
+  }
+}
+
 main {
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  padding: 2%;
   width: 60vw;
-
-  h1 {
-    font: var(--h1);
-    margin: 1% auto;
-    text-align: center;
-  }
 }
 
 section {
-  display: flex;
-  flex-direction: column;
-  white-space: normal;
   display: block;
-  overflow-wrap: break-word;
+  white-space: normal;
 
   h2 {
     font: var(--h2);
@@ -103,14 +135,108 @@ a {
   color: inherit;
 }
 
+footer {
+  display: flex;
+  margin-top: 2.5%;
+  flex-direction: column;
+  justify-content: space-between;
+  height: fit-content;
+  width: 100%;
+
+  div {
+    margin: 2.5% auto;
+    font-size: 1.5em;
+
+    a {
+      text-decoration: none;
+    }
+  }
+
+  ul {
+    height: fit-content;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 2.5%;
+
+    li {
+      cursor: pointer;
+      height: fit-content;
+      width: fit-content;
+      transition: all 0.5s ease;
+
+      svg {
+        height: clamp(2.5rem, 5vw, 7.5rem);
+        fill: white;
+      }
+    }
+
+    li:hover {
+      scale: 105%;
+    }
+  }
+}
+
+.highlight-text {
+  position: relative;
+  width: fit-content;
+}
+
+.highlight-text::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  width: 100%;
+  height: 5px;
+  background: var(--accent);
+  transition: width 0.5s ease;
+}
+
+.underline::after {
+  width: 100%;
+}
+
+.highlight-text:hover::after {
+  width: 0;
+}
+
 @media (max-width: 576px) {
   :root {
+    --font: normal 350 clamp(1.0rem, 1.0vw, 2rem) "Outfit", sans-serif;
     --h1: normal 600 clamp(2.0rem, 4vw, 3rem) "Oswald", sans-serif;
     --h2: normal 600 clamp(2.0rem, 3vw, 3rem) "Oswald", sans-serif;
     --h3: normal 600 clamp(2.0rem, 2vw, 3rem) "Oswald", sans-serif;
+    --code: normal 300 clamp(1.0rem, 1.0vw, 2rem) "Cascadia Mono", sans-serif;
   }
 
   main {
-    width: 95vw;
+    width: 90vw;
+  }
+
+  nav {
+    height: fit-content;
+
+    a,
+    div {
+      display: none;
+    }
+
+    h1 {
+      margin: 2.5%;
+    }
+  }
+
+  footer {
+    margin: 5% auto;
+
+    div {
+      font-size: 1.25em;
+    }
+  }
+
+  .highlight-text::after {
+    height: 3px;
   }
 }

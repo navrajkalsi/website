@@ -1,0 +1,11 @@
+const socials = {
+  github: "https://www.github.com/navrajkalsi",
+  linkedin: "https://linkedin.com/in/navrajkalsi",
+  reddit: "https://reddit.com/u/navrajkalsi",
+  twitter: "https://twitter.com/navrajkalsi",
+  email: "mailto:navrajkalsi.com",
+};
+
+function visit_url(url) {
+  window.open(url, "_blank");
+}
