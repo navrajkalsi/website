@@ -71,7 +71,7 @@ main {
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  width: 60vw;
+  width: 50vw;
 }
 
 section {
