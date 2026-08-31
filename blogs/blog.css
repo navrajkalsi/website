@@ -21,6 +21,8 @@ body {
   font: var(--font);
   font-optical-sizing: auto;
   line-height: 1.5;
+  display: flex;
+  flex-direction: column;
 }
 
 nav {
