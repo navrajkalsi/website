@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GSim-RS</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Outfit:wght@100..900&family=Cascadia+Mono:ital,wght@0,200..700;1,200..700&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+
+<body>
+  <main>
+    <h1>Volumetric simulation for G-code</h1>
+
+    <section id="demo">
+      <figure>
+        <img src="https://github.com/navrajkalsi/gsim-rs/blob/v2/media/demo.gif?raw=true" alt="GSim-RS
+          adaptive toolpath simulation demo" />
+      </figure>
+
+      The first thing I would wonder looking at the demo is how the stock simulation runs in <b>realtime</b>,
+      without compromising on stock resolution and simulation frame rate.
+      <br><br>
+      That exactly is the most interesting part and here I will break down my implementation.
+    </section>
+
+    <hr>
+
+    <section>
+      <h2>Setting Up</h2>
+
+      Firstly, may I suggest taking a brief look at this high-level architecture diagram:
+      <figure>
+        <img src="https://github.com/navrajkalsi/gsim-rs/blob/blog/media/arch.svg?raw=true"
+          alt="High level architecture diagram of GSim" />
+      </figure>
+
+      We will specifically focus on the following modules:
+      <figure>
+        <img src="https://github.com/navrajkalsi/gsim-rs/blob/blog/media/arch-simulation.svg?raw=true"
+          alt="Zommed architecture view of rendering and geometry modules" />
+      </figure>
+
+      All the rest of the parts are related to <i>parsing</i> and <i>interpretation</i>,
+      and can be inferred from the full diagram.
+
+      <h3>Note</h3>
+      Common GPU optimizations are already applied and will not be discussed about, such as:
+      <ul>
+        <li>Back-face culling</li>
+        <li>Depth testing</li>
+        <li>Instancing</li>
+        <li>Vertex Indexing</li>
+      </ul>
+    </section>
+
+    <hr>
+
+    <section>
+      <h2>Stock Representation</h2>
+
+      Originally, stock was implemented as a 3D grid of cube-shaped voxels.
+      Now, it is represented as a 2D grid of voxels with dynamic heights (<b>a heightfield</b>).
+      This simplification is valid because material is removed <i>top to down</i> in a vertical milling setup,
+      and reduces stock instance counts substantially. Therefore, the stock surface can be described by a
+      single Z height for every XY position.
+      <br><br>
+      <b>Terminology Note:</b>
+      Almost all the subsequent uses of the term <i>voxel</i> actually mean a <i>heightfield</i>.
+      <br><br>
+      Stock resolution is a single constant and determines the number of voxels on the longest edge of the
+      stock. Therefore for a cube-shaped stock, this approach cuts instance count by <b>1000 times</b> at
+      the <i>default resolution of 1000</i>.
+      This approach has its own <a href="#limitations">limitations</a> though, which are covered at the end.
+
+      <figure class="code"><img
+          src="https://github.com/navrajkalsi/gsim-rs/blob/blog/media/snips/code_1.png?raw=true" />
+      </figure>
+
+      <code>StockInstance</code> is our "voxel" and the <code>StockTracker</code> serves as the interface for
+      constructing and manipulating stock and owns all the <code>StockInstance</code>s.
+      Stock <code>size</code> comes from the program config.
+      <br><br>
+      Following are visuals of a single XY position of the stock in both 3D and 2D grids,
+      using a resolution of <code>100</code> for better visibility of voxels.
+      Default is <code>1000</code>.
+
+      <figure>
+        <img src="https://github.com/navrajkalsi/gsim-rs/blob/blog/media/3d_grid.gif?raw=true" alt="Multiple cube-shaped voxels
+        representing a single XY cell in a 3D grid." />
+        <figcaption>
+          Multiple cube-shaped voxels represent a single XY cell in a 3D grid.
+        </figcaption>
+      </figure>
+
+      <figure>
+        <img src="https://github.com/navrajkalsi/gsim-rs/blob/blog/media/2d_grid.gif?raw=true" alt="Single height-adjustable voxel
+        represents a single XY cell in a 2D grid." />
+        <figcaption>
+          Single height-adjustable voxel (heightfield) represents a single XY cell in a 2D grid.
+        </figcaption>
+      </figure>
+
+      <h3 id="face-visibility-control">Face Visibility Control</h3>
+      If we arrange multiple of these <b>heightfields</b> on the XY plane, we get a cuboidal stock.
+      <code>StockTracker::new</code> does exactly this using a <i>stock size</i> and <i>RESOLUTION</i>,
+      defined as a constant:
+
+      <figure class="code"><img
+          src="https://github.com/navrajkalsi/gsim-rs/blob/blog/media/snips/code_2.png?raw=true" /></figure>
+
+      Here is a line-only view of the polygons making up a stock of size <b>500x250x250</b>.
+
+      <figure>
+        <img src="https://github.com/navrajkalsi/gsim-rs/blob/blog/media/stock_all_faces.gif?raw=true"
+          alt="Full stock made up of a 2D grid of heightfields with all faces rendered" />
+        <figcaption>
+          Visual uses resolution of <code>10</code> for better visibility of heightfields.
+          Default is <code>1000</code>.
+        </figcaption>
+      </figure>
+
+      Even with <b>back-face culling</b> that's a lot of wasted polygons.
+      This will only be amplified at the default resolution.
+      We see that most of the voxel faces are occluded by their neighbours and will not be visible to the user.
+      <br><br>
+      Although we do not pay all of this rasterization cost because of <b>depth testing</b>, but we still
+      pay all the cost for vertex drawing, only to have them hidden by other voxels. We need to only draw
+      faces whose neighbour is not visible.
+      <br><br>
+      To solve this, we need <b>independent face visibility control per voxel</b>, by encoding the visible faces
+      directly into the <code>StockInstance</code> so that the GPU shader can draw only the required faces.
+      Like so:
+
+      <figure class="code"><img
+          src="https://github.com/navrajkalsi/gsim-rs/blob/blog/media/snips/code_3.png?raw=true" /></figure>
+
+      <code>faces</code> is a <b>bit mask</b> of face bits described here:
+
+      <figure class="code"><img
+          src="https://github.com/navrajkalsi/gsim-rs/blob/blog/media/snips/code_4.png?raw=true" /></figure>
+
+      Next, changing <code>StockTracker</code> constructor to only show the exposed faces:
+
+      <figure class="code"><img
+          src="https://github.com/navrajkalsi/gsim-rs/blob/blog/media/snips/code_5.png?raw=true" /></figure>
+
+      After this change:
+      <ul>
+        <li>Every voxel has its <code>TOP</code> and <code>BOTTOM</code> face bits set.</li>
+        <li>Boundary voxels have their outward-facing face bits set.</li>
+        <li>Fully enclosed voxels have nothing but their <code>TOP</code> and <code>BOTTOM</code> face bits set.
+        </li>
+      </ul>
+      <br><br>
+      After this optimization, only exposed faces are included in <code>faces</code> mask of an instance.
+      <b>Back-face culling</b> then further discards faces that are facing away from the user,
+      based on the simulation orientation.
+      <br><br>
+      Here is the <b>after</b> line-only view of the same stock of size <b>500x250x250</b>:
+
+      <figure>
+        <img src="https://github.com/navrajkalsi/gsim-rs/blob/blog/media/stock_exposed_faces.gif?raw=true"
+          alt="Full stock made up of a 2D grid of heightfields with only exposed faces rendered" />
+        <figcaption>
+          Visual uses resolution of <code>10</code> for better visibility of heightfields.
+          Default is <code>1000</code>.
+        </figcaption>
+      </figure>
+    </section>
+
+    <hr>
+
+    <section>
+      <h2>Stock Cutting</h2>
+
+      Now we need to <i>remove</i> material based on current <b>tool position</b> from G-code execution.
+      We also need diameter of the active tool, which we get from the program config:
+
+      <figure class="code"><img
+          src="https://github.com/navrajkalsi/gsim-rs/blob/blog/media/snips/code_6.png?raw=true" /></figure>
+
+      This can be done by lowering the voxels whose center falls under the cross-section of the tool.
+      Instead of checking every voxel's distance from the tool, since our voxels are a regular 2D grid we
+      can use <b>indexing to narrow</b> the search region.
+      Like so:
+
+      <figure class="code"><img
+          src="https://github.com/navrajkalsi/gsim-rs/blob/blog/media/snips/code_7.png?raw=true" /></figure>
+
+      The voxel height is now changed dynamically, based on tool diameter and position and we are only
+      examining <b>a fraction of the total grid</b>.
+      <br><br>
+      We are not done yet!
+      Check this simulation with a tool:
+
+      <figure>
+        <img src="https://github.com/navrajkalsi/gsim-rs/blob/blog/media/no_face_restoring.gif?raw=true"
+          alt="Stock cutting demo without restoring exposed faces" />
+        <figcaption>
+          Stock render pipeline is now set to render <b>filled polygons</b>.
+        </figcaption>
+      </figure>
+
+      <code>cut</code> just lowers the voxels that overlap with the tool,
+      but the <a href="#face-visibility-control">optimization of hiding inner faces</a> needs to be undone now for the
+      newly exposed voxel faces.
+
+      <h3>Runtime Face Toggling</h3>
+      We need to make the newly exposed faces visible:
+
+      <figure class="code"><img
+          src="https://github.com/navrajkalsi/gsim-rs/blob/blog/media/snips/code_8.png?raw=true" /></figure>
+
+      <code>show_neighbours</code> takes the index of the voxel whose height was changed in
+      <code>cut</code> and its new <code>height</code>,
+      compares it with the heights of neighbouring voxels and sets <code>faces</code> bits in these voxels,
+      making the faces visible that will be exposed as a result of lowering the target voxel.
+      Returns a new bit mask of the direction of voxel instances that changed relative to the target
+      voxel - this will come in use later.
+      <br><br>
+      Plugging this into <code>cut</code>:
+
+      <figure class="code"><img
+          src="https://github.com/navrajkalsi/gsim-rs/blob/blog/media/snips/code_9.png?raw=true" /></figure>
+
+      Here's the final version:
+
+      <figure>
+        <img src="https://github.com/navrajkalsi/gsim-rs/blob/blog/media/with_face_restoring.gif?raw=true"
+          alt="Stock cutting demo with restoring newly exposed faces" />
+      </figure>
+
+      This works as expected.
+
+      <h3>Updating GPU Buffer</h3>
+      <code>StockTracker::instances</code> now correctly reflects all voxels faces for each cut.
+      Uptill now, we have been uploading the whole <code>instances</code> vector to the GPU for each frame:
+
+      <figure class="code"><img
+          src="https://github.com/navrajkalsi/gsim-rs/blob/blog/media/snips/code_10.png?raw=true" /></figure>
+
+      For only a small updated section that's pretty wasteful.
+      On top of this, we are <b>rewriting the same instances</b> if the tool did not contact the stock at all.
+      Instead, we can track the range that actually changed and only upload that:
+
+      <figure class="code"><img
+          src="https://github.com/navrajkalsi/gsim-rs/blob/blog/media/snips/code_11.png?raw=true" /></figure>
+
+      As another optimization, we change <code>cut</code>'s signature.
+      It now returns <code>false</code> if there was <b>no change</b> in <code>self.instances</code>,
+      so that we can <b>skip updating</b> the GPU buffer altogether.
+      <br><br>
+      Retrieving the slice that needs to be re-uploaded is then straightforward:
+
+      <figure class="code"><img
+          src="https://github.com/navrajkalsi/gsim-rs/blob/blog/media/snips/code_12.png?raw=true" /></figure>
+
+      And used like so:
+
+      <figure class="code"><img
+          src="https://github.com/navrajkalsi/gsim-rs/blob/blog/media/snips/code_13.png?raw=true" /></figure>
+
+      Although this is my current implementation, I must say that this is not the most efficient
+      way I can think of to update the GPU buffer. If a cut spans multiple <code>x</code> columns,
+      <i>almost</i> every <code>y</code> value between the first and the last column
+      falls inside the upated range - even the ones the tool never came near.
+      <br><br>
+      The solution would be returning a slice of changed <code>y</code> values for each of the
+      changed <code>x</code> columns from <code>StockTracker::instances</code>,
+      meaning: <code>&[&[StockInstance]]</code>.
+    </section>
+
+    <hr>
+
+    <section>
+      <h2 id="limitations">Limitations</h2>
+
+      <ul>
+        <li>
+          Using a 2D grid of voxel instances, only allows us to construct <b>cuboidal</b> stocks and cannot be
+          used to simulate <b>undercuts</b> with a tool.
+        </li>
+        <li>
+          Type of machine is limited to <b>vertical milling</b> machines.
+        </li>
+        <li>
+          The range tracked for GPU updates is not a tight diff. See the explanation above.
+        </li>
+        <li>
+          While checking for affected voxels in a cut, we mathematically check the distance between each
+          voxel and tool center. A more efficient approach could be to create an <b>index mask</b> for each tool that
+          contains the index of each changed voxel for given tool position.
+        </li>
+        <li>
+          The per-voxel cut test uses a slightly larger effective radius. We get a small amount of
+          over-inclusion for simplicity.
+        </li>
+      </ul>
+    </section>
+  </main>
+</body>
+
+</html>

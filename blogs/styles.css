@@ -1,0 +1,116 @@
+:root {
+  --text: #ddd;
+  --background: #141414;
+  --accent: #fa1919;
+  --font: normal 350 clamp(1.25rem, 1.0vw, 2rem) "Outfit", sans-serif;
+  --h1: normal 600 clamp(1.25rem, 4vw, 3rem) "Oswald", sans-serif;
+  --h2: normal 600 clamp(1.25rem, 3vw, 3rem) "Oswald", sans-serif;
+  --h3: normal 600 clamp(1.25rem, 2vw, 3rem) "Oswald", sans-serif;
+  --code: normal 300 clamp(1.25rem, 1.0vw, 2rem) "Cascadia Mono", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--background);
+  color: var(--text);
+  font: var(--font);
+  font-optical-sizing: auto;
+  line-height: 1.5;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  padding: 2%;
+  width: 60vw;
+
+  h1 {
+    font: var(--h1);
+    margin: 1% auto;
+    text-align: center;
+  }
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  white-space: normal;
+  display: block;
+  overflow-wrap: break-word;
+
+  h2 {
+    font: var(--h2);
+    margin-bottom: 2.5%;
+  }
+
+  h3 {
+    font: var(--h3);
+    margin: 2.5% 0;
+  }
+
+  figure {
+    display: block;
+    margin: 5% 0;
+    width: 100%;
+    height: fit-content;
+
+    img {
+      object-fit: contain;
+      width: 100%;
+    }
+  }
+
+  figure:not(.code) {
+    img {
+      max-height: 80vh;
+    }
+  }
+
+  figcaption {
+    font-size: 0.8em;
+    text-align: center;
+
+    code {
+      font-size: 0.8em;
+    }
+  }
+
+  ul {
+    margin: 2.5% 0 0 2.5%;
+
+    li {
+      margin: 5px 0;
+    }
+  }
+}
+
+hr {
+  margin: 5% 0;
+}
+
+code {
+  font: var(--code);
+  background: #292929;
+}
+
+a {
+  color: inherit;
+}
+
+@media (max-width: 576px) {
+  :root {
+    --h1: normal 600 clamp(2.0rem, 4vw, 3rem) "Oswald", sans-serif;
+    --h2: normal 600 clamp(2.0rem, 3vw, 3rem) "Oswald", sans-serif;
+    --h3: normal 600 clamp(2.0rem, 2vw, 3rem) "Oswald", sans-serif;
+  }
+
+  main {
+    width: 95vw;
+  }
+}
