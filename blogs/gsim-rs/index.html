@@ -26,7 +26,7 @@
 
 <body>
   <nav>
-    <a type="button" title="See all projects." href="https://navrajkalsi.com">
+    <a type="button" title="See all blogs." href="/blogs">
       <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff">
         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
         <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
@@ -48,7 +48,7 @@
       </figure>
 
       The first thing I would wonder looking at the demo is how the stock simulation runs in <b>realtime</b>,
-      without compromising on stock resolution and simulation frame rate.
+      without compromising on stock resolution or simulation frame rate.
       <br><br>
       That exactly is the most interesting part and here I will break down my implementation.
     </section>
@@ -203,7 +203,7 @@
     <section>
       <h2>Stock Cutting</h2>
 
-      Now we need to <i>remove</i> material based on current <b>tool position</b> from G-code execution.
+      Now we need to <i>remove</i> material based on current tool position from G-code execution.
       We also need diameter of the active tool, which we get from the program config:
 
       <figure class="code"><img

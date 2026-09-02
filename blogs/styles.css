@@ -1,4 +1,4 @@
-/* Individual blog styles */
+/* Base styling for individual blogs and their listing page. */
 
 :root {
   --text: #ddd;
@@ -77,12 +77,17 @@ main {
 }
 
 section {
+  margin-top: 5%;
   display: block;
   white-space: normal;
+  border: 2px solid white;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+  text-align: center;
 
   h2 {
     font: var(--h2);
-    margin-bottom: 2.5%;
+    margin: 2.5% auto;
   }
 
   h3 {
@@ -90,49 +95,18 @@ section {
     margin: 2.5% 0;
   }
 
-  figure {
-    display: block;
-    margin: 5% 0;
+  img {
+    object-fit: contain;
     width: 100%;
-    height: fit-content;
-
-    img {
-      object-fit: contain;
-      width: 100%;
-    }
   }
 
-  figure:not(.code) {
-    img {
-      max-height: 80vh;
-    }
-  }
-
-  figcaption {
-    font-size: 0.8em;
-    text-align: center;
-
-    code {
-      font-size: 0.8em;
-    }
-  }
-
-  ul {
-    margin: 2.5% 0 0 2.5%;
-
-    li {
-      margin: 5px 0;
-    }
+  div {
+    margin: 2.5% 5%;
   }
 }
 
-hr {
-  margin: 5% 0;
-}
-
-code {
-  font: var(--code);
-  background: #292929;
+section:hover {
+  scale: 102.5%;
 }
 
 a {

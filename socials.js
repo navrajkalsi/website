@@ -9,3 +9,4 @@ const socials = {
 function visit_url(url) {
   window.open(url, "_blank");
 }
+
