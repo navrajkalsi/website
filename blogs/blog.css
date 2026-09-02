@@ -228,7 +228,7 @@ footer {
     }
 
     h1 {
-      margin: 2.5%;
+      margin: 2.5% auto;
     }
   }
 
@@ -236,7 +236,11 @@ footer {
     margin: 5% auto;
 
     div {
-      font-size: 1.25em;
+      font-size: 1em;
+    }
+
+    ul {
+      margin: 5%;
     }
   }
 
